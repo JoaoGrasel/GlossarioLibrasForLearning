@@ -1,0 +1,9 @@
+{% if lista_categorias %}
+    <ul>
+    {%for categoria in lista_categorias %}
+        <li><a href="/Glossario/{{ categoria.id }}/">{{ categoria.titulo }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p> Não existem categorias cadastradas.</p>
+{% endif %}

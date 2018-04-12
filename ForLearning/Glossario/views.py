@@ -1,6 +1,7 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from django.template import loader
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.urls import reverse
 
 from .models import Categoria, Sinal
 # Create your views here.
@@ -8,19 +9,22 @@ from .models import Categoria, Sinal
 def index(request):
     lista_categorias = Categoria.objects.all()
     context = {'lista_categorias': lista_categorias}
-    return render(request, 'Glossario/index.trabalho.html', context)
+    return render(request, 'Glossario/index.html', context)
 
 def conteudo_categoria(request, categoria_id):
     try:
         categoria = Categoria.objects.get(pk=categoria_id)
         lista_sinais = Sinal.objects.all()
-        context = {'lista_sinais': lista_sinais}
+        context = {'lista_sinais': lista_sinais,
+                   'categoria': categoria}
     except Categoria.DoesNotExist:
         raise Http404("Categoria não existe")
-    return render(request,'Glossario/video1.html', {'categoria':categoria}, context)
+    return render(request,'Glossario/sinais.html', context)
 
 def enviar_sinal(request, categoria_id):
-    return HttpResponse("Enviar Sinal para categoria %s" % categoria_id)
+    categoria = Categoria.objects.get(pk=categoria_id)
+    context = {'categoria': categoria}
+    return render(request, 'Glossario/enviar-sinal.html', context)
 
 def sinal_enviado_sucesso(request):
     return HttpResponse("Sinal enviado com sucesso")

@@ -1,0 +1,12 @@
+{% if lista_sinais %}
+    {%for sinais in lista_sinais %}
+        <ul>    
+            <li>{{ sinal.titulo }}</li>
+            <li>{{ sinal.descricao }}</li>
+        </ul>
+    {% endfor %}
+{% else %}
+    <p> Nao existem sinais cadastrados.</p>
+{% endif %}
+
+<p><a href="/{{ categoria.id }}/enviar-sinal/ "/> Sugira um sinal para esta categoria!</p>
