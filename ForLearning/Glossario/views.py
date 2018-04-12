@@ -26,5 +26,20 @@ def enviar_sinal(request, categoria_id):
     context = {'categoria': categoria}
     return render(request, 'Glossario/enviar-sinal.html', context)
 
-def sinal_enviado_sucesso(request):
-    return HttpResponse("Sinal enviado com sucesso")
+def sinal_enviado_sucesso(request, categoria_id):
+    categoria = Categoria.objects.get(pk=categoria_id)
+    sinal = Sinal()
+    try:
+        titulo_escrito = sinal.titulo_set.get(pk=request.POST['titulo'])
+        descricao_escrita = sinal.descricao_set.get(pk=request.POST['descricao'])
+        categoria_selecionada = sinal.categoria_set(categoria)
+    except (KeyError, Sinal.DoesNotExist):
+        return render(request, 'Glossario/enviar-categoria.html', {
+            'categoria': categoria,
+            'mensagem_erro': "Você deixou um campo em branco",
+        })
+    
+    else:
+        sinal.save()
+        return HttpResponseRedirect(reverse('Glossario/index.html', args=(sinal.id)))
+        
