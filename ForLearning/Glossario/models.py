@@ -11,7 +11,7 @@ class Categoria(models.Model):
 class Sinal(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
-    descricao = models.TextField(blank=True)
+    descricao = models.TextField()
     
     def __str__(self):
-            return self.titulo
+        return self.titulo

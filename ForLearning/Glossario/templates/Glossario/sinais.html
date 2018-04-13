@@ -1,8 +1,8 @@
 {% if lista_sinais %}
-    {%for sinais in lista_sinais %}
+    {%for sinal in lista_sinais %}
         <ul>    
-            <li>{{ sinal.titulo }}</li>
-            <li>{{ sinal.descricao }}</li>
+            <li>Titulo: {{ sinal.titulo }}</li>
+            <li>Descricao: {{ sinal.descricao }}</li>
         </ul>
     {% endfor %}
 {% else %}

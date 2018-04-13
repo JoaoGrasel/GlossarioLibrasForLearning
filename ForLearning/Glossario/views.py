@@ -1,9 +1,10 @@
-from django.shortcuts import render, HttpResponse, get_object_or_404
+from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from django.template import loader
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 
 from .models import Categoria, Sinal
+from .forms import FormularioSinal
 # Create your views here.
 
 def index(request):
@@ -22,24 +23,17 @@ def conteudo_categoria(request, categoria_id):
     return render(request,'Glossario/sinais.html', context)
 
 def enviar_sinal(request, categoria_id):
-    categoria = Categoria.objects.get(pk=categoria_id)
-    context = {'categoria': categoria}
-    return render(request, 'Glossario/enviar-sinal.html', context)
-
-def sinal_enviado_sucesso(request, categoria_id):
-    categoria = Categoria.objects.get(pk=categoria_id)
-    sinal = Sinal()
-    try:
-        titulo_escrito = sinal.titulo_set.get(pk=request.POST['titulo'])
-        descricao_escrita = sinal.descricao_set.get(pk=request.POST['descricao'])
-        categoria_selecionada = sinal.categoria_set(categoria)
-    except (KeyError, Sinal.DoesNotExist):
-        return render(request, 'Glossario/enviar-categoria.html', {
-            'categoria': categoria,
-            'mensagem_erro': "Você deixou um campo em branco",
-        })
-    
+    if request.method == "POST":
+        categoria = Categoria.objects.get(pk=categoria_id)
+        formulario = FormularioSinal(request.POST)
+        if formulario.is_valid():
+            sinal = formulario.save(commit=False)
+            sinal.categoria = categoria
+            sinal.save()
+            return redirect('conteudo-categoria', categoria.id)
     else:
-        sinal.save()
-        return HttpResponseRedirect(reverse('Glossario/index.html', args=(sinal.id)))
-        
+        categoria = Categoria.objects.get(pk=categoria_id)
+        formulario = FormularioSinal()
+        context = {'categoria': categoria,
+                   'formulario': formulario}
+        return render(request, 'Glossario/enviar-sinal.html', context)    

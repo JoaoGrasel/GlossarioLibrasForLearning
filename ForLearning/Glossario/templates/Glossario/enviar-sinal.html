@@ -2,13 +2,10 @@
 
 {% if mensagem_erro %}<p><strong>{{ mensagem_erro }}</strong></p>{% endif %}
 
-<form method="post">
+<form method="POST">
 {% csrf_token %}
-    <label>Titulo:</label>
-    <input type="text" name="titulo" value="Titulo"/>
-    <br/>
-    <label>Descricao:</label>
-    <input type="text" name="descricao" value="Descricao"/>
-    <br/>
-    <input type="submit" value="Enviar"/>
+    {{ formulario.as_p }}
+    <input type="button" value='Voltar' onclick='history.go(-1)' />
+    <button type="submit" name="enviar">Enviar</button>
+    
 </form>
