@@ -25,12 +25,16 @@ def conteudo_categoria(request, categoria_id):
 def enviar_sinal(request, categoria_id):
     if request.method == "POST":
         categoria = Categoria.objects.get(pk=categoria_id)
-        formulario = FormularioSinal(request.POST)
+        formulario = FormularioSinal(request.POST, request.FILES)
         if formulario.is_valid():
             sinal = formulario.save(commit=False)
             sinal.categoria = categoria
             sinal.save()
             return redirect('conteudo-categoria', categoria.id)
+        else:
+            context = {'categoria': categoria,
+                       'formulario': formulario}
+            return render(request, 'Glossario/enviar-sinal.html', context)   
     else:
         categoria = Categoria.objects.get(pk=categoria_id)
         formulario = FormularioSinal()
