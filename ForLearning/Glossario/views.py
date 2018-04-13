@@ -15,7 +15,7 @@ def index(request):
 def conteudo_categoria(request, categoria_id):
     try:
         categoria = Categoria.objects.get(pk=categoria_id)
-        lista_sinais = Sinal.objects.filter(categoria__id=categoria_id)
+        lista_sinais = Sinal.objects.filter(categoria__id=categoria_id, postado=True)
         context = {'lista_sinais': lista_sinais,
                    'categoria': categoria}
     except Categoria.DoesNotExist:

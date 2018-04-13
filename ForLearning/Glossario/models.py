@@ -12,6 +12,7 @@ class Sinal(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
     descricao = models.TextField()
+    postado = models.BooleanField(default=False)
     
     def __str__(self):
         return self.titulo
