@@ -2,7 +2,8 @@
 
 {% if mensagem_erro %}<p><strong>{{ mensagem_erro }}</strong></p>{% endif %}
 
-<form method="POST">
+
+<form enctype="multipart/form-data" method="POST">
 {% csrf_token %}
     {{ formulario.as_p }}
     <input type="button" value='Voltar' onclick='history.go(-1)' />

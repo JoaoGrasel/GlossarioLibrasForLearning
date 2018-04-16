@@ -1,6 +1,6 @@
 {% if lista_categorias %}
     <ul>
-    {%for categoria in lista_categorias %}
+    {% for categoria in lista_categorias %}
         <li><a href="/Glossario/{{ categoria.id }}/">{{ categoria.titulo }}</a></li>
     {% endfor %}
     </ul>

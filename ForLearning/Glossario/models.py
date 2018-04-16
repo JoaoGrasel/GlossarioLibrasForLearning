@@ -12,7 +12,7 @@ class Sinal(models.Model):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
     descricao = models.TextField()
-    arquivo_video = models.FileField(upload_to='static/Glossario/videos', default=False)
+    arquivo_video = models.FileField(upload_to='videos', null=False)
     postado = models.BooleanField(default=False)
     
     def __str__(self):
