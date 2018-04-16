@@ -1,3 +1,9 @@
+{% extends 'Glossario/base.html' %}	
+ {% block content %}
+
+<div class="row" >
+			<div class="col l6 push-l3 ">
+
 <h1> Envie um sinal para a categoria {{ categoria.titulo }}</h1>
 
 {% if mensagem_erro %}<p><strong>{{ mensagem_erro }}</strong></p>{% endif %}
@@ -6,6 +12,12 @@
 <form enctype="multipart/form-data" method="POST">
 {% csrf_token %}
     {{ formulario.as_p }}
-    <input type="button" value='Voltar' onclick='history.go(-1)' />
-    <button type="submit" name="enviar">Enviar</button>
+    <input class="waves-effect waves-light btn-large color #01579b" type="button" value='Voltar' onclick='history.go(-1)' />
+    <button class="waves-effect waves-light btn-large color #01579b"  type="submit" name="enviar">Enviar</button>
 </form>
+
+	</div>
+</div>	
+
+
+{% endblock %}

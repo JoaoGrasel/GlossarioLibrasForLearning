@@ -1,17 +1,29 @@
-{% if lista_sinais %}
-    {%for sinal in lista_sinais %}
-        <ul>    
-            <li>Titulo: {{ sinal.titulo }}</li>
-            <li>Descricao: {{ sinal.descricao }}</li>
-            <li> Video: {{ sinal.arquivo_video }}</li>
-                
-                    
-        </ul>
-    {% endfor %}
-{% else %}
-    <p> Nao existem sinais cadastrados.</p>
-{% endif %}
+{% extends 'Glossario/base.html' %}	
+ {% block content %}
 
-<input type="button" value='Voltar' onclick='history.go(-1)' />
-<br/>
-<p><a href="/{{ categoria.id }}/enviar-sinal/ "/> Sugira um sinal para esta categoria!</p>
+<div class="row" >
+	<div class="col l3 ">
+		{% if lista_sinais %}
+		    {%for sinal in lista_sinais %}
+		        <ul>    
+		            <li>Titulo: {{ sinal.titulo }}</li>
+		            <li>Descricao: {{ sinal.descricao }}</li>
+		            <li> Video: {{ sinal.arquivo_video }}</li>                
+		        </ul>
+		    
+	</div>
+		    <br></br><br></br>
+	<div class="col l2 push-l6 ">
+		    {% endfor %}
+		{% else %}
+		   <center> <p> Nao existem sinais cadastrados.</p> </center>
+		{% endif %}
+
+		<input   class="waves-effect waves-light btn-large color #01579b" type="button" value='Voltar' onclick='history.go(-1)' />
+		<br/>
+
+		<p><a href="/{{ categoria.id }}/enviar-sinal/ "/> Sugira um sinal para esta categoria!</p>
+	</div>
+</div>	
+
+{% endblock %}

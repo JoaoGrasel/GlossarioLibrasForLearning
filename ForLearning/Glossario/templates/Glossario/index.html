@@ -1,9 +1,20 @@
+{% extends 'Glossario/base.html' %}	
+ {% block content %}
+
+<center>
+   		<br></br>
+   		<h1> TODAS AS AREAS</h1>
+   		<br></br>	
+
+
 {% if lista_categorias %}
     <ul>
     {% for categoria in lista_categorias %}
-        <li><a href="/Glossario/{{ categoria.id }}/">{{ categoria.titulo }}</a></li>
+        <li><a href="/Glossario/{{ categoria.id }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ categoria.titulo }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
     <p> Não existem categorias cadastradas.</p>
 {% endif %}
+
+{% endblock %}
