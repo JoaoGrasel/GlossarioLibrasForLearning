@@ -1,28 +1,20 @@
 {% extends 'Glossario/base.html' %}	
  {% block content %}
-
-<div class="row" >
-	<div class="col l3 ">
-		{% if lista_sinais %}
-		    {%for sinal in lista_sinais %}
-		        <ul>    
-		            <li>Titulo: {{ sinal.titulo }}</li>
-		            <li>Descricao: {{ sinal.descricao }}</li>
-
-		            <video class="responsive-video" id = "video"> Video: {{ sinal.arquivo_video }}</video>                
-
-		            <li> Video:<li>    
-                    <li>
-                        <video controls="controls" preload="metadata">
-                            <source src="/static/Glossario/{{ sinal.arquivo_video }}" type="video/mp4"> 
-                            <object data="">
-                                <embed src="/static/Glossario/{{ sinal.arquitov_video }}">
-                            </object>
-                        </video>
-                    </li>
-		        </ul>
-		    
-	</div>
+	{% if lista_sinais %}
+		{%for sinal in lista_sinais %}
+		   	    <br></br><br></br>
+		   	 <div class="row conteiner" >
+				<div class="grid-example col s3">
+			        <ul>    
+			            <li>
+	                	 	<div class="video-container">
+       							<iframe src="/static/Glossario/{{ sinal.arquivo_video }}" frameborder="100" allowfullscreen></iframe>
+      					</li>
+        				<a id = "topo" >{{ sinal.titulo }}</a>
+			            <p>{{ sinal.descricao }}</p>
+	  			    </ul>
+		 		</div>  
+			</div>
 		    <br></br><br></br>
 	<div class="col l2 push-l6 ">
 		    {% endfor %}
