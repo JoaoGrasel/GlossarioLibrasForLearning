@@ -8,7 +8,18 @@
 		        <ul>    
 		            <li>Titulo: {{ sinal.titulo }}</li>
 		            <li>Descricao: {{ sinal.descricao }}</li>
+
 		            <video class="responsive-video" id = "video"> Video: {{ sinal.arquivo_video }}</video>                
+
+		            <li> Video:<li>    
+                    <li>
+                        <video controls="controls" preload="metadata">
+                            <source src="/static/Glossario/{{ sinal.arquivo_video }}" type="video/mp4"> 
+                            <object data="">
+                                <embed src="/static/Glossario/{{ sinal.arquitov_video }}">
+                            </object>
+                        </video>
+                    </li>
 		        </ul>
 		    
 	</div>
