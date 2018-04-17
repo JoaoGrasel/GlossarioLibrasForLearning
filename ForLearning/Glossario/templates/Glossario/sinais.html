@@ -8,7 +8,15 @@
 		        <ul>    
 		            <li>Titulo: {{ sinal.titulo }}</li>
 		            <li>Descricao: {{ sinal.descricao }}</li>
-		            <li> Video: {{ sinal.arquivo_video }}</li>                
+		            <li> Video: <li>    
+                    <li>
+                        <video controls="controls" preload="metadata">
+                            <source src="{{ sinal.arquivo_video }}" type="video/mp4"> 
+                            <object data="">
+                                <embed src="{{ sinal.arquitov_video }}">
+                            </object>
+                        </video>
+                    </li>
 		        </ul>
 		    
 	</div>
