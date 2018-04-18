@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang= "pt-br">
 	<head>
@@ -13,13 +14,13 @@
    			<nav class="teal darken-4">   
 	<div class="nav-wrapper ">
 	      
-	      <a href="#" class="brand-logo center" id= "topo" >Glossario Libras</a>
+	      <a href="http://localhost:8000/" class="brand-logo center" id= "topo" >Glossario Libras</a>
 	      <a href="#" data-activates="menu-mobile" class="button-collapse rigth">
 	      <i class ="material-icons">menu</i>
 	    </a>
 	     	<ul id="nav-mobile" class="right hide-on-med-and-down">
 	        <li  ><a href=""> Home </a></li>
-	        <li class="active"><a href="file:///home/cleberton/GlossarioLibrasForLearning/ForLearning/Glossario/templates/Glossario/index.trabalho.html"> Videos </a></li>
+	        <li class="active"><a href="http://localhost:8000/"> Videos </a></li>
 	        <li><a href=""> Letra Libra </a></li>
 	        <li><a href="#"> Quem Somos? </a></li>
 	        <li><a href=""> Contato</a></li>
@@ -30,22 +31,15 @@
 	</nav>
 		<!--________________________________________________________________________________________________________________________________-->
 
+	<div class="container">
 		{% block content %}
 		{% endblock %}
-
+	</div>
 
   	<!--________________________________________________________________________________________________________________________________-->
 <!--        RODAPE DA PAGINA           --> 
-		    <br></br>
-   			<br></br><br></br>
-   			<br></br><br></br>
-   			<br></br><br></br>
-   			<br></br><br></br>
-<br></br><br></br>
-   	
 
-   	
-		    </div>	
+   
 		    <footer class="page-footer teal darken-4" >
 		              <div class="col l12">
 		              <div class="container ">© 2018 Todos os direitos Reservados<a class="grey-text text-lighten-4 right" href="#!">Mais Links</a>

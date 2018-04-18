@@ -1,6 +1,19 @@
+footer{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+.footer{
+	position: fixed;
+	left: 0;
+	bottom: 4%;
+	width: 90%;
+}
+
 body {
  background-color: #b0bec5;
- }
+} 
 
 .unidades {
     padding: 4%;
@@ -15,6 +28,42 @@ body {
 	font-size: 40px;
 	text-indent: 30px;
 	font-weight: bold;
-	color:white ;
+	color: white;
 }
 
+h1{
+	font-size: 30px;
+	text-indent: 30px;
+	font-weight: bold;
+	color: black;
+	
+}
+
+h2{
+	font-size: 24px;
+	text-indent: 30px;	
+	font-weight: bold;
+	color: black;
+
+}	
+.titulo{
+	font-size: 20px;
+	text-indent: 30px;
+	font-weight: bold;
+	color:black ;
+	list-style-type: none;
+}
+.subtitulo{
+	font-size: 14px;
+	text-indent: 30px;
+	font-weight: bold;
+	color:#616161  ;
+
+}	
+.link{
+		font-size: 18px;
+	text-indent: 30px;
+	font-weight: bold;
+	color:#01579b   ;
+
+}

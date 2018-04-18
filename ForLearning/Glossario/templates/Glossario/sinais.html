@@ -1,32 +1,32 @@
-{% extends 'Glossario/base.html' %}	
+	
+{% extends 'Glossario/base.html' %}
+
  {% block content %}
 	{% if lista_sinais %}
-		{%for sinal in lista_sinais %}
-		   	    <br></br><br></br>
-		   	 <div class="row conteiner" >
-				<div class="grid-example col s3">
-			        <ul>    
-			            <li>
-	                	 	<div class="video-container">
-       							<iframe src="/static/Glossario/{{ sinal.arquivo_video }}" frameborder="100" allowfullscreen></iframe>
-      					</li>
-        				<a id = "topo" >{{ sinal.titulo }}</a>
-			            <p>{{ sinal.descricao }}</p>
-	  			    </ul>
+		<br></br>
+		<div class="row">
+		{% for sinal in lista_sinais %}
+	 			
+		 		<div class="col l4 ">
+			     	    <video  width="320" height="240" controls>
+	                		<source src="/static/Glossario/{{ sinal.arquivo_video }}" type="video/mp4">
+	                	</video>
+            			<li class ="titulo" >{{ sinal.titulo }}</li>
+			            <a class ="subtitulo">{{ sinal.descricao }}</a>
+	  			   
 		 		</div>  
-			</div>
-		    <br></br><br></br>
-	<div class="col l2 push-l6 ">
-		    {% endfor %}
+
+	 	{% endfor %}
+		</div>
 		{% else %}
 		   <center> <p> Nao existem sinais cadastrados.</p> </center>
 		{% endif %}
-
-		<input   class="waves-effect waves-light btn-large color #01579b" type="button" value='Voltar' onclick='history.go(-1)' />
-		<br/>
-
-		<p><a href="/{{ categoria.id }}/enviar-sinal/ "/> Sugira um sinal para esta categoria!</p>
-	</div>
-</div>	
-
+		<div class="footer">
+			<div class="row" >	    
+				<div class="col l3 push-l10 right-align ">
+					<input class="waves-effect waves-light btn-large color #01579b" type="button" value='Voltar' onclick='history.go(-1)' /><br/>
+					<a class ="link" href="/{{ categoria.id }}/enviar-sinal/ "/> Sugira um sinal para esta categoria!</a>
+				</div>
+			</div>	
+		</div>
 {% endblock %}

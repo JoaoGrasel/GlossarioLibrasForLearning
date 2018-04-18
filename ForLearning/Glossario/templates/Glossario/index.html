@@ -9,10 +9,15 @@
 
 {% if lista_categorias %}
     <ul>
+    <div class="row">	
     {% for categoria in lista_categorias %}
-        <li><a href="/Glossario/{{ categoria.id }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ categoria.titulo }}</a></li>
+       <div class="col l2 ">
+       		<li><a href="/Glossario/{{ categoria.id }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ categoria.titulo }}</a></li>
+   		</div>
     {% endfor %}
     </ul>
+    </div>
+
 {% else %}
     <p> Não existem categorias cadastradas.</p>
 {% endif %}
