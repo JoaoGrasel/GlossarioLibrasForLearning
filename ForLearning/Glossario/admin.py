@@ -4,5 +4,5 @@ from .models import Glossario, Sinal
 
 # Register your models here.
 
-admin.site.register(Categoria)
+admin.site.register(Glossario)
 admin.site.register(Sinal)
