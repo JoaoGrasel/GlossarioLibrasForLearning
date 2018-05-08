@@ -2,6 +2,15 @@
 {% extends 'Glossario/base.html' %}
 
  {% block content %}	
+
+<!-- AQUI MINEIRO! 
+	O laço for em baixo dessa mensagem é responsável por mostrar na pagina todos os glossarios filhos, é só estilizar esse 'glossario.tittle' como voce quiser. Lembre que quando clicar nele tem que ir para o glossario em questão. Use como exemplos outros botoes do projeto. Qualquer coisa só mandar mensagem. -->
+
+	{% for glossario in lista_glossarios_filhos %}
+	 	<h1>{{ glossario.titulo }}<h1>
+	{% endfor %}
+
+
 	{% if lista_sinais %}
 		<br></br>
 		<div class="row">

@@ -8,7 +8,7 @@ from .forms import FormularioSinal
 # Create your views here.
 
 def index(request):
-    lista_glossarios = Glossario.objects.filter(~Q(pai = None))
+    lista_glossarios = Glossario.objects.filter( pai = None)
     context = {'lista_glossarios': lista_glossarios}
     return render(request, 'Glossario/index.html', context)
 
