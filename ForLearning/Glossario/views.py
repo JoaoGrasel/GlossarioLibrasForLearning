@@ -2,13 +2,13 @@ from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from django.template import loader
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-
+from django.db.models import Q
 from .models import Glossario, Sinal
 from .forms import FormularioSinal
 # Create your views here.
 
 def index(request):
-    lista_glossarios = Glossario.objects.all()
+    lista_glossarios = Glossario.objects.filter(~Q(pai = None))
     context = {'lista_glossarios': lista_glossarios}
     return render(request, 'Glossario/index.html', context)
 
