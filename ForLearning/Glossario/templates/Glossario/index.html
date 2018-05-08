@@ -7,19 +7,19 @@
    		<br></br>	
 
 
-{% if lista_categorias %}
+{% if lista_glossarios %}
     <ul>
     <div class="row">	
-    {% for categoria in lista_categorias %}
+    {% for glossario in lista_glossarios %}
        <div class="col l2 ">
-       		<li><a href="/Glossario/{{ categoria.id }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ categoria.titulo }}</a></li>
+       		<li><a href="/Glossario/{{ glossario.id }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ glossario.titulo }}</a></li>
    		</div>
     {% endfor %}
     </ul>
     </div>
 
 {% else %}
-    <p> Não existem categorias cadastradas.</p>
+    <p> Não existem glossarios cadastradas.</p>
 {% endif %}
 
 {% endblock %}

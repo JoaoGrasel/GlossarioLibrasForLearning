@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Categoria, Sinal
+from .models import Glossario, Sinal
 
 # Register your models here.
 

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Categoria, Sinal
+from .models import Glossario, Sinal
 
 class FormularioSinal(forms.ModelForm):
     
