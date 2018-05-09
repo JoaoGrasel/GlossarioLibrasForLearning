@@ -4,15 +4,28 @@
  {% block content %}	
 
 <!-- AQUI MINEIRO! 
-	O laço for em baixo dessa mensagem é responsável por mostrar na pagina todos os glossarios filhos, é só estilizar esse 'glossario.tittle' como voce quiser. Lembre que quando clicar nele tem que ir para o glossario em questão. Use como exemplos outros botoes do projeto. Qualquer coisa só mandar mensagem. -->
-
-	{% for glossario in lista_glossarios_filhos %}
-	 	<h1>{{ glossario.titulo }}<h1>
-	{% endfor %}
+	O laço for em baixo dessa mensagem é responsável por mostrar na pagina todos os glossarios filhos, é só estilizar esse 'glossario.tittle' como voce quiser. Lembre que quando clicar nele tem que ir para o glossario 
+	em questão. Use como exemplos outros botoes do projeto. Qualquer coisa só mandar mensagem. -->	
+	<br></br>
+</div>
+  <div class="row">
+      	<div class="col s8 push-s2">
+   			<center><p2>Todos os videos de {{ glossario.titulo }} </p2></center>
+   		</div>	
+      	<div class=" col s4 push-s1 right-align ">	
+		 <select>
+			<option value="" disabled selected> Escolha uma opção de {{ glossario }}</option>
+		{% for glossario in lista_glossarios_filhos %}
+	    	<option value="/Glossario/{{ glossario.id }}/">{{ glossario.titulo }}</option>
+ 		{% endfor %}
+  	 </select>
+    <label></label>	
+   </div>
+ </div>  
+</div>
 
 
 	{% if lista_sinais %}
-		<br></br>
 		<div class="row">
 		{% for sinal in lista_sinais %}
 	 			
@@ -24,6 +37,7 @@
 			            <a class ="subtitulo">{{ sinal.descricao }}</a>
 	  			   
 		 		</div>  
+		 </div> 		
 
 	 	{% endfor %}	
 		</div>
@@ -33,7 +47,7 @@
 		<div class="footer">
 			<div class="row" >	    
 				<div class="col l3 push-l10 right-align ">
-					<input class="waves-effect waves-light btn-large color #01579b" type="button" value='Voltar' onclick='history.go(-1)' /><br/>
+					<input class="waves-effect waves-light btn color #01579b" type="button" value='Voltar' onclick='history.go(-1)' /><br/>
 					<a class ="link" href="/{{ glossario.id }}/enviar-sinal/ "/> Sugira um sinal para este glossario!</a>
 				</div>
 			</div>	
