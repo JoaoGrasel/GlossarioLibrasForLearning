@@ -8,27 +8,26 @@
 	em questão. Use como exemplos outros botoes do projeto. Qualquer coisa só mandar mensagem. -->	
 	<br></br>
 </div>
-  <div class="row">
-      	<div class="col s7 push-s2">
+  <div class="row container">
+      	<div class="col s12">
    			<center><p2>Todos os videos de {{ glossario.titulo }} </p2></center>
+   			<br></br>
    		</div>	
-      	<div class=" col s4 push-s2 right-align ">	
-		 <select>
-			<option value="" disabled selected> Escolha uma opção de {{ glossario }}</option>
+   	
+      	<div class=" col s12 ">	
 		{% for glossario in lista_glossarios_filhos %}
-	    	<option value="/Glossario/{{ glossario.id }}/">{{ glossario.titulo }}</option>
+		    <a href="/Glossario/{{ glossario.id }}/" class="btn #01579b">{{ glossario.titulo }}</a>
  		{% endfor %}
-  	 </select>
-    <label></label>	
+      <label></label>	
    </div>
  </div>  
 </div>
 
-
+	<br></br>
 	{% if lista_sinais %}
-		<div class="row container">
+		<div class="row">
 		{% for sinal in lista_sinais %}
-		 		<div class=" container col l4 ">
+		 		<div class="col l10 push-l1 ">
 			     	<video  width="320" height="240" controls>
 	                	<source src="/static/Glossario/{{ sinal.arquivo_video }}" type="video/mp4">
 	                </video>
