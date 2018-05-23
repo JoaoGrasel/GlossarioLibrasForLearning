@@ -3,7 +3,7 @@ from django.template import loader
 from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.db.models import Q
-from .models import Glossario, Sinal
+from .models import Glossario, Sinal, Tema
 from .forms import FormularioSinal
 # Create your views here.
 
