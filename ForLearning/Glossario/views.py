@@ -44,3 +44,15 @@ def enviar_sinal(request, glossario_id):
                    'formulario': formulario}
         return render(request, 'Glossario/enviar-sinal.html', context) 
 
+
+def pesquisa(request, glossario_id):
+    try:
+        glossario = Glossario.objects.get(pk=glossario_id)
+        lista_sinais = Sinal.objects.filter(glossario__id=glossario_id, postado=True)
+        lista_glossarios_filhos = Glossario.objects.filter(pai = glossario_id)
+        context = {'lista_sinais': lista_sinais,
+                   'glossario': glossario,
+                   'lista_glossarios_filhos': lista_glossarios_filhos}
+    except Glossario.DoesNotExist:
+        raise Http404("Glossario não existe")
+    return render(request,'Glossario/sinais.html', context)
