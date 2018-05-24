@@ -24,6 +24,7 @@ class Sinal(models.Model):
     arquivo_video = models.FileField(upload_to='videos', null=False)
     postado = models.BooleanField(default=False)
     temas = models.ManyToManyField(Tema)
+    responsavel = models.ForeignKey(Perfil, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.titulo
