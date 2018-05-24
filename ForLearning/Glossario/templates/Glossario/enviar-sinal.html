@@ -1,24 +1,19 @@
 {% extends 'Glossario/base.html' %}	
  {% block content %}
 <br></br>
-<div class="row" >
-			<div class="unidades" >
-			<div class="col l7  center ">
+<div class="row container center unidades" >
+	<div class="col l10 push-l1 ">
+		<h3> Envie um sinal para a glossario {{ glossario.titulo }}</h3>
 
-<h2> Envie um sinal para a glossario {{ glossario.titulo }}</h2>
+			{% if mensagem_erro %}<p><strong>{{ mensagem_erro }}</strong></p>{% endif %}
 
-{% if mensagem_erro %}<p><strong>{{ mensagem_erro }}</strong></p>{% endif %}
-
-
-<form enctype="multipart/form-data" method="POST">
-{% csrf_token %}
-    {{ formulario.as_p }}
-    <button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
-    <button class="waves-effect waves-light btn color #01579b"  type="submit" name="enviar">Enviar</button>
-</form>
-		</div>
+		<form enctype="multipart/form-data" method="POST">
+			{% csrf_token %}
+    		{{ formulario.as_p }}
+    		<button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
+   		 	<button class="waves-effect waves-light btn color #01579b"  type="submit" name="enviar">Enviar</button>
+		</form>
 	</div>
 </div>	
-
 
 {% endblock %}

@@ -17,12 +17,21 @@ body {
 
 .unidades {
    	
-    padding: 1%;
-    width: 70px;
-    margin-bottom: 1px;
+    padding: 2%;
+    width: 800px;
+
     background-color:  #eceff1;
     text-shadow: 2px 2px 2px rbga(0,0,0,0.2);
     box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+
+
+}
+.unidades2 {
+   	
+    padding: 2%;
+    background-color: #cfd8dc ;
+
+
 
 
 }
@@ -42,10 +51,17 @@ h1{
 }
 
 h2{
+	font-size: 16px;
+	text-indent: 30px;	
+	font-weight: bold;
+	color: #009688;
+
+}	
+h3{
 	font-size: 24px;
 	text-indent: 30px;	
 	font-weight: bold;
-	color: black;
+	color: #009688;
 
 }	
 .titulo{
@@ -70,13 +86,7 @@ h2{
 
 }
 
-h2{
-	font-size: 16px;
-	text-indent: 30px;	
-	font-weight: bold;
-	color: #009688;
 
-}	
 
 p2{
 	font-size: 25px;
