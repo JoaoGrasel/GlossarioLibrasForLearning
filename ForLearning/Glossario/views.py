@@ -57,3 +57,21 @@ def enviar_sinal(request, glossario_id):
         return render(request, 'Glossario/enviar-sinal.html', context) 
 
 
+def conteudo_categorias_glossarios(request):
+    try:
+        lista_glossarios = Glossario.objects.filter( pai = None)
+        context = {'lista_glossarios': lista_glossarios}
+
+    except Glossario.DoesNotExist:
+        raise Http404("Não existem Glossario")
+    return render(request,'Glossario/categorias-glossario.html', context)
+
+
+ # def conteudo_categorias_temas(request):
+ #     try:
+ #        lista_tema = Tema.objects.filter( pai = None)
+ #        context = {'lista_tema': lista_tema} 
+
+ #    except Glossario.DoesNotExist:
+ #        raise Http404("Não existem Temas")
+ #        return render(request,'Glossario/categorias-tema.html', context)    

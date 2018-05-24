@@ -16,7 +16,7 @@
       	<div class=" col s12 ">	
 			{% if lista_glossarios_filhos  %}
 				{% for glossario in lista_glossarios_filhos %}
-					<a href="/Glossario/{{ glossario.id }}/" class="btn">{{ glossario.titulo }}</a>
+					<a href="/conteudo-categorias-glossarios/{{ glossario.id }}/" class="btn">{{ glossario.titulo }}</a>
 				 {% endfor %}
 				 {% else %}	
 			 	   <center><p>{{ glossario.titulo }} não tem sinais</p></center>
