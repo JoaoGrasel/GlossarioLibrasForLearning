@@ -10,11 +10,10 @@
 </div>
   <div class="row container">
       	<div class="col s12">
-   			<center><p2>Todos os videos de {{ glossario.titulo }} </p2></center>
+   			<center><p2>Todos os videos de {{ tema.titulo }} </p2></center>
    			<br></br>
    		</div>	
-   	
-      	<div class=" col s12 ">	
+       	<div class=" col s12 ">	
 		{% for glossario in lista_glossarios_filhos %}
 		    <a href="/Glossario/{{ glossario.id }}/" class="btn #01579b">{{ glossario.titulo }}</a>
  		{% endfor %}

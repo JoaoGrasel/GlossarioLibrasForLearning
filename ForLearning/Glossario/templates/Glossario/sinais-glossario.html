@@ -16,17 +16,17 @@
    </div>
    <div class="row  unidades2">	
       	<div class=" col s12 ">	
-		{% for glossario in lista_glossarios_filhos %}
-		    {% if glossario in lista_glossarios_filhos = 0 %}
-		    	<h3> {{ glossario.titulo }} não tem sinais</h3>
-		    {% else %}	
-		    <a href="/Glossario/{{ glossario.id }}/" class="btn">{{ glossario.titulo }}</a>
+			{% if lista_glossarios_filhos  %}
+				{% for glossario in lista_glossarios_filhos %}
+					<a href="/Glossario/{{ glossario.id }}/" class="btn">{{ glossario.titulo }}</a>
+				 {% endfor %}
+				 {% else %}	
+			 	   <h3> {{ glossario.titulo }} não tem sinais</h3>
+			{% endif %} 	   
 
- 		{% endfor %}
-      <label></label>	
-   </div>
- </div>  
-</di
+      	<label></label>	
+  		 </div>
+	 </div>  
 
 	<br></br>
 	{% if lista_sinais %}
