@@ -1,0 +1,25 @@
+{% extends 'Glossario/base.html' %}	
+ {% block content %}
+
+<center>
+   		<br></br>
+   		<h1> SINAIS </h1>
+   		<br></br>	
+
+
+{% if lista_sinais %}
+    <ul>
+    <div class="row container">	
+    {% for tema in lista_sinais %}
+       <div class="col l2 ">
+       		<li><a href="/Glossario/{{ sianis-tema }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ temas.titulo }}</a></li>
+   		</div>
+    {% endfor %}
+    </ul>
+    </div>
+
+{% else %}
+    <p> Não existem glossarios cadastradas.</p>
+{% endif %}
+
+{% endblock %}

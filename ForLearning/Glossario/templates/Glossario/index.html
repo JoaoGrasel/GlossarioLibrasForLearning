@@ -1,25 +1,17 @@
 {% extends 'Glossario/base.html' %}	
  {% block content %}
-
-<center>
-   		<br></br>
-   		<h1> TODAS AS AREAS</h1>
-   		<br></br>	
-
-
-{% if lista_glossarios %}
-    <ul>
-    <div class="row container">	
-    {% for glossario in lista_glossarios %}
-       <div class="col l2 ">
-       		<li><a href="/Glossario/{{ glossario.id }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ glossario.titulo }}</a></li>
-   		</div>
-    {% endfor %}
-    </ul>
+    <br></br>
+    <div class="row ">	
+        <br></br><br></br><br></br>
+      <div class="col center l12 ">
+            <a href="/{{ tema.id }}/categorias-temas/" class="btn">TEMA</a>
+      </div>
+       		 <br></br><br></br><br></br>
+      
+      <div class="col  center l12"> 
+           <a href="/{{ glossario.id }}/categorias-glossario/" class="btn">GLOSSARIO</a>
+      </div>
     </div>
 
-{% else %}
-    <p> Não existem glossarios cadastradas.</p>
-{% endif %}
 
 {% endblock %}

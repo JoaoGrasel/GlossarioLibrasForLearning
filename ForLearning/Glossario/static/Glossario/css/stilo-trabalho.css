@@ -28,13 +28,21 @@ body {
 }
 .unidades2 {
    	
-    padding: 2%;
+    padding: 1%;
     background-color: #cfd8dc ;
-
-
-
-
 }
+
+.unidades3 {
+   	
+    padding: 50%;
+    background-color: black ;
+}
+.unidades4 {
+   	
+    padding: 50%;
+    background-color: #cfd8dc ;
+}
+
 #topo{
 	font-size: 40px;
 	text-indent: 30px;
@@ -43,10 +51,10 @@ body {
 }
 
 h1{
-	font-size: 30px;
+	font-size: 40px;
 	text-indent: 30px;
 	font-weight: bold;
-	color: black;
+	color: #004d40;
 	
 }
 
@@ -54,7 +62,7 @@ h2{
 	font-size: 16px;
 	text-indent: 30px;	
 	font-weight: bold;
-	color: #009688;
+	color: black;
 
 }	
 h3{

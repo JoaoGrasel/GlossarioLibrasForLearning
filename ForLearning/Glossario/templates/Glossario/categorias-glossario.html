@@ -1,0 +1,25 @@
+{% extends 'Glossario/base.html' %}	
+ {% block content %}
+
+<center>
+   		<br></br>
+   		<h1> GLOSSARIO </h1>
+   		<br></br>	
+
+
+{% if lista_glossarios %}
+    <ul>
+    <div class="row container">	
+    {% for glossario in lista_glossarios %}
+       <div class="col l2 ">
+       		<li><a href="/Glossario/{{ glossario.id }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ glossario.titulo }}</a></li>
+   		</div>
+    {% endfor %}
+    </ul>
+    </div>
+
+{% else %}
+    <p> Não existem glossarios cadastradas.</p>
+{% endif %}
+
+{% endblock %}

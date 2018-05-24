@@ -6,31 +6,30 @@
 <!-- AQUI MINEIRO! 
 	O laço for em baixo dessa mensagem é responsável por mostrar na pagina todos os glossarios filhos, é só estilizar esse 'glossario.tittle' como voce quiser. Lembre que quando clicar nele tem que ir para o glossario 
 	em questão. Use como exemplos outros botoes do projeto. Qualquer coisa só mandar mensagem. -->	
-	<br></br>
 
-  <div class="row container">
+
+  <div class="row  unidades2">
       	<div class="col s12">
-   			<center><p2>Todos os videos de {{ glossario.titulo }} </p2></center>
-   			<br></br>
-   		</div>	
-   </div>
-   <div class="row  unidades2">	
+   			<center><h1>{{ glossario.titulo }}</h1></center>
+   	   	</div>	
+ 		<br></br>		<br></br>		<br></br>
       	<div class=" col s12 ">	
 			{% if lista_glossarios_filhos  %}
 				{% for glossario in lista_glossarios_filhos %}
 					<a href="/Glossario/{{ glossario.id }}/" class="btn">{{ glossario.titulo }}</a>
 				 {% endfor %}
 				 {% else %}	
-			 	   <h3> {{ glossario.titulo }} não tem sinais</h3>
+			 	   <center><p>{{ glossario.titulo }} não tem sinais</p></center>
 			{% endif %} 	   
 
       	<label></label>	
   		 </div>
 	 </div>  
 
-	<br></br>
+
 	{% if lista_sinais %}
 		<div class="row">
+		<center><h2>Todos os videos de {{ glossario.titulo }} </h2></center>
 		{% for sinal in lista_sinais %}
 		 		<div class="col l10 push-l1 ">
 			     	<video  width="320" height="240" controls>
@@ -43,7 +42,7 @@
 
 	 	{% endfor %}	
 		{% else %}
-		   <center> <p> Nao existem sinais cadastrados.</p> </center>
+		   <center> <p>Nao existem videos cadastrados.</p> </center>
 		{% endif %}
 		<div class="footer">
 			<div class="row" >	    
