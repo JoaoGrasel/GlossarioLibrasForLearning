@@ -16,11 +16,13 @@ body {
 } 
 
 .unidades {
-    padding: 4%;
-    margin-bottom: 15px;
-    background-color:  white;
-    text-shadow: 5px 5px 5px rbga(0,0,0,0.5);
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+   	
+    padding: 1%;
+    width: 70px;
+    margin-bottom: 1px;
+    background-color:  #eceff1;
+    text-shadow: 2px 2px 2px rbga(0,0,0,0.2);
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 
 
 }

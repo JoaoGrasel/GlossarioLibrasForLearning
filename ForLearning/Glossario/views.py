@@ -56,3 +56,4 @@ def enviar_sinal(request, glossario_id):
                    'formulario': formulario}
         return render(request, 'Glossario/enviar-sinal.html', context) 
 
+
