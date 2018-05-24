@@ -22,7 +22,19 @@ def conteudo_glossario(request, glossario_id):
                    'lista_glossarios_filhos': lista_glossarios_filhos}
     except Glossario.DoesNotExist:
         raise Http404("Glossario não existe")
-    return render(request,'Glossario/sinais.html', context)
+    return render(request,'Glossario/sinais-glossario.html', context)
+
+def conteudo_tema(request, tema_id):
+    try:
+        tema = Tema.objects.get(pk=tema_id)
+        lista_sinais = Sinal.objects.filter(tema__id=glossario_id, postado=True)
+        lista_temas_filhos = Tema.objects.filter(pai = tema_id)
+        context = {'lista_sinais': lista_sinais,
+                   'tema': tema,
+                   'lista_temas_filhos': lista_temas_filhos}
+    except Tema.DoesNotExist:
+        raise Http404("Tema não existe")
+    return render(request,'Glossario/sinais-tema.html', context)
 
 def enviar_sinal(request, glossario_id):
     if request.method == "POST":
