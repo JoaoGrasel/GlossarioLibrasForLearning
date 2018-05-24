@@ -1,4 +1,5 @@
 from django.db import models
+from Perfis.models import Perfil
 
 # Create your models here.
 
