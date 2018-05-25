@@ -1,5 +1,5 @@
 from django.db import models
-from Perfil.models import Perfil
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -16,6 +16,24 @@ class Tema(models.Model):
 
 	def __str__(self):
 		return self.titulo;
+
+class Perfil(models.Model):
+
+    nome = models.CharField(max_length=255, null=False) 
+    telefone = models.CharField(max_length=15, null=False)
+    nome_empresa = models.CharField(max_length=255, null=False)
+    contatos = models.ManyToManyField('self')
+    usuario = models.OneToOneField(User, related_name="perfil", on_delete=models.CASCADE)
+    responsavel = models.BooleanField(default=False)
+
+    def __str__(self):
+        return this.nome
+
+    @property
+    def email(self):
+        return self.usuario.email
+
+
         
 class Sinal(models.Model):
     glossario = models.ForeignKey(Glossario, on_delete=models.CASCADE)
@@ -28,4 +46,5 @@ class Sinal(models.Model):
     
     def __str__(self):
         return self.titulo
+
 
