@@ -20,9 +20,8 @@ class Tema(models.Model):
 class Perfil(models.Model):
 
     nome = models.CharField(max_length=255, null=False) 
-    telefone = models.CharField(max_length=15, null=False)
-    nome_empresa = models.CharField(max_length=255, null=False)
-    contatos = models.ManyToManyField('self')
+    universidade = models.CharField(max_length=255, null=True)
+    curso = models.CharField(max_length=255, null=True)
     usuario = models.OneToOneField(User, related_name="perfil", on_delete=models.CASCADE)
     responsavel = models.BooleanField(default=False)
 
@@ -32,9 +31,7 @@ class Perfil(models.Model):
     @property
     def email(self):
         return self.usuario.email
-
-
-        
+   
 class Sinal(models.Model):
     glossario = models.ForeignKey(Glossario, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
