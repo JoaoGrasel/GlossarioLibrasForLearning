@@ -3,23 +3,39 @@
 
 <center>
    		<br></br>
-   		<h1> SINAIS </h1>
+   		<h1> TEMAS </h1>
    		<br></br>	
 
 
-{% if lista_sinais %}
+{% if lista_temas %}
     <ul>
-    <div class="row container">	
-    {% for tema in lista_sinais %}
-       <div class="col l2 ">
-       		<li><a href="/Glossario/{{ sianis-tema }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ temas.titulo }}</a></li>
+    <div class="row contasiner">	
+    {% for tema in lista_temas %}
+       <div class="col l12 ">
+       		<li><a href="/conteudo-categorias-temas/{{ glossario.id }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ temas.titulo }}</a></li>
    		</div>
     {% endfor %}
     </ul>
     </div>
+    </div>
+     <div class="footer">
+      <div class="row" >      
+        <div class="col s12 push-s1 right-align ">
+          <button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
+        </div>  
+      </div>
+    </div> 
+
+
 
 {% else %}
-    <p> Não existem glossarios cadastradas.</p>
+    <p> Não existem temas cadastrados.</p>
+        <div class="row" >      
+            <div class="col s12 center ">
+              <button class="waves-effect waves-light btn" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
+            </div>  
+        </div>
+      
 {% endif %}
-
+    
 {% endblock %}
