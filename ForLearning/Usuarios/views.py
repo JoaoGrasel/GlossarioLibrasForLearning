@@ -2,34 +2,42 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.views.generic.base import View
 from Glossario.models import Perfil
-from Usuarios.forms import RegistrarUsuarioForm
+from Usuarios.forms import RegistrarUsuarioForm, FormularioLogin
+from django.contrib.auth import authenticate, login
 
-class RegistrarUsuarioView(View):
-	
-	template_name = 'registrar.html'
 
-	def get(self, request, *args, **kwargs):
-		return render(request, self.template_name)
-		
-	def post(self, request, *args, **kwargs):
+def login_view(request):
 
-		form = RegistrarUsuarioForm(request.POST)
+	if request.method == "POST":
+		formulario = FormularioLogin(request.POST)
+		if formulario.is_valid():
+			dados_form = formulario.data
+			username = dados_form['username']
+			senha = dados_form['senha']
+			user = authenticate(username=username, password=senha)
+			if user is not None:
+				return redirect(request, 'index')
+			else:
+				return render(request, 'Usuarios/login.html')
 
-		if form.is_valid():
+		else:
+			formulario = FormularioLogin()
+			return render(request, 'Usuarios/login.html')
 
-			dados_form = form.data
-
-			usuario = User.objects.create_user(dados_form['nome'], 
-				dados_form['email'], dados_form['senha'])
-
+def registrar_usuario_view(request):
+	if request.method == "POST":		
+		formulario = RegistrarUsuarioForm(request.POST)
+		if formulario.is_valid():
+			dados_form = formulario.data
+			usuario = User.objects.create_user(dados_form['username'], 
+							 				   dados_form['email'], 
+							 				   dados_form['senha'])
 			perfil = Perfil(nome=dados_form['nome'], 
-							email=dados_form['email'], 
-							curso=dados_form['curso'],
-							universidade=dados_form['universidade'],
 							usuario=usuario)
-
 			perfil.save()
-
-			return redirect('index')
-
-		return render(request, self.template_name, {'form' : form})
+			return redirect('index')	
+		else: 
+			return render(request, 'Usuarios/registrar.html') 
+	else: 
+		formulario = RegistrarUsuarioForm()
+		return render(request, 'Usuarios/registrar.html') 

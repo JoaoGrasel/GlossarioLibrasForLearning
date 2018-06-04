@@ -24,8 +24,6 @@ class Tema(models.Model):
 class Perfil(models.Model):
 
     nome = models.CharField(max_length=255, null=False) 
-    universidade = models.CharField(max_length=255, null=True)
-    curso = models.CharField(max_length=255, null=True)
     usuario = models.OneToOneField(User, related_name="perfil", on_delete=models.CASCADE)
     responsavel = models.BooleanField(default=False)
 

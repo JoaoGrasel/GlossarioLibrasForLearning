@@ -4,10 +4,9 @@ from django.contrib.auth.models import User
 class RegistrarUsuarioForm(forms.Form):
 
 	nome = forms.CharField(required=True)
+	username = forms.CharField(required=True)
 	email = forms.EmailField(required=True)
 	senha = forms.CharField(required=True)
-	curso = forms.CharField(required=False)
-	universidade = forms.CharField(required=False)
 
 	def is_valid(self):
 
@@ -28,3 +27,8 @@ class RegistrarUsuarioForm(forms.Form):
 	def adiciona_erro(self, message):
 		errors = self._errors.setdefault(forms.forms.NON_FIELD_ERRORS, forms.utils.ErrorList())
 		errors.append(message)
+
+class FormularioLogin(forms.Form):
+
+	username = forms.CharField(required=True)
+	senha = forms.CharField(required=True)

@@ -1,8 +1,8 @@
-from django.conf.urls import patterns, url
-from views import RegistrarUsuarioView
+from django.urls import path
+from . import views
 
-urlpatterns = patterns('',
-	url(r'^registrar/$', RegistrarUsuarioView.as_view(), name="registrar"),
-    url(r'^login/$', 'django.contrib.auth.views.login', {'template_name' : 'login.html'}, name="login"),
-	url(r'^logout/$', 'django.contrib.auth.views.logout_then_login', {'login_url': '/login'}, name="logout")
-)
+urlpatterns = [
+	path('registrar/', views.registrar_usuario_view, name="registrar"),
+    path('login/',views.login_view, name="login"),
+	# path(r'^logout/$', 'django.contrib.auth.views.logout_then_login', {'login_url': '/login'}, name="logout")
+]
