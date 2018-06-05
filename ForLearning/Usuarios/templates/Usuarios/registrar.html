@@ -1,32 +1,9 @@
-
 <form method="POST">
 
     {% csrf_token %}
-
-    <h2>Crie seu usuário</h2>
-
-    <input type="text" id="id_email" name="email" placeholder="Email *" required autofocus>
-
-    <input type="text" id="id_username" name="username" placeholder="Username *" required autofocus>
-
-    <input type="text" id="id_nome" name="nome" placeholder="Nome *" required >
-
-    <input type="password" id="id_senha" name="senha" placeholder="Senha *" required>
-
-    <hr/>
-
-    <button type="submit" value="Login"> Registrar </button>
-
-    <hr/>
-
-    {% if form.errors %}
-        <div>
-            <button type="button" data-dismiss="alert" aria-hidden="true">
-                &times;
-            </button>
-            {{form.non_field_errors}}
-        </div>
-    {% endif %}
-
-</form>
+    
+    {{ formulario.as_p }}
+    
+    <input type='submit' value='Registrar' />
+   </form>
 

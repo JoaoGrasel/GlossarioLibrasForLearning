@@ -1,14 +1,7 @@
-
- <form  method="POST">
-
-     {% csrf_token %}
-
-     <h2>Login</h2>
-
-     <input type="text" id="id_username" name="username" placeholder="Username" required autofocus>
-     <input type="password" id="id_password" name="senha" placeholder="Senha" required>
-     <button type="submit" value="Login">Login</button>
-
-     <a href="{% url 'registrar' %}">registre-se</a>
-
- </form>
+<form method="POST">
+    {% csrf_token %}
+    
+    {{ formulario.as_p }}
+    
+    <input type='submit' value='Logar' />
+   </form>
