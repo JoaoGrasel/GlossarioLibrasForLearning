@@ -35,12 +35,6 @@ class Perfil(models.Model):
     def __str__(self):
         return this.nome
 
-def cria_user_Perfil(sender, instance, created, **kwargs):
-    if created:
-        Perfil.objects.create(user=instance)
-
-post_save.connect(cria_user_Perfil, sender=User)
-
 class Sinal(models.Model):
     glossario = models.ForeignKey(Glossario, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)

@@ -16,14 +16,31 @@ def logar(request):
 			return render(request, "Usuarios/login.html", {"formulario":formulario})
 	return render(request, "Usuarios/login.html", {"formulario": AuthenticationForm()})
 
-def registrar(request):
+def registrar_usuario(request):
 	if request.method=='POST':
 		formulario = UserCreationForm(request.POST)
 
 		if formulario.is_valid():
-			formulario.save()
-			return HttpResponseRedirect("/Usuarios/login/")
+			user = formulario.save()
+			context = { 'user': user }
+			return render(request, 'Usuarios/registrar-perfil.html', context)   
 		else:
-			return render(request, "Usuarios/registrar.html", {"formulario": formulario})
+			return render(request, "Usuarios/registrar-usuario.html", {"formulario": formulario})
 
-	return render(request, "Usuarios/registrar.html", {"formulario": UserCreationForm()})		
+	return render(request, "Usuarios/registrar-usuario.html", {"formulario": UserCreationForm()})		
+
+def registrar_perfil(request, user):
+	if request.method == "POST":
+	    formulario = FormularioPerfil(request.POST)
+	    if formulario.is_valid():
+	        perfil = formulario.save(commit=False)
+	        perfil.user = user
+	        perfil.save()
+	        return redirect('login')
+	    else:
+	        context = { 'formulario': formulario }
+	        return render(request, 'Usuarios/registrar-perfil.html', context)   
+	else:
+	    formulario = FormularioPerfil()
+	    context = { 'formulario': formulario }
+	    return render(request, 'Usuarios/registrar-perfil.html', context) 
