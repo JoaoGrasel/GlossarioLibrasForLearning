@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 # Create your models here.
 
@@ -23,20 +24,22 @@ class Tema(models.Model):
 
 class Perfil(models.Model):
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     nome = models.CharField(max_length=255, null=False) 
     sobrenome = models.CharField(max_length=255, null=True) 
     curso = models.CharField(max_length=255, null=True) 
     universidade = models.CharField(max_length=255, null=True) 
-    usuario = models.OneToOneField(User, related_name="perfil", on_delete=models.CASCADE)
     responsavel = models.BooleanField(default=False)
+
 
     def __str__(self):
         return this.nome
 
-    @property
-    def email(self):
-        return self.usuario.email
-   
+def cria_user_Perfil(sender, instance, created, **kwargs):
+    if created:
+        Perfil.objects.create(user=instance)
+
+post_save.connect(cria_user_Perfil, sender=User)
 
 class Sinal(models.Model):
     glossario = models.ForeignKey(Glossario, on_delete=models.CASCADE)
@@ -49,5 +52,4 @@ class Sinal(models.Model):
     
     def __str__(self):
         return self.titulo
-
 
