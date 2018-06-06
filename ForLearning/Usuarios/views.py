@@ -1,9 +1,10 @@
-from django.shortcuts import render_to_response, render
+from django.shortcuts import render_to_response, render, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
-
+from django.contrib.auth.models import User
+from .forms import FormularioPerfil
 
 def logar(request):
 	if request.method == 'POST':
@@ -18,29 +19,21 @@ def logar(request):
 
 def registrar_usuario(request):
 	if request.method=='POST':
-		formulario = UserCreationForm(request.POST)
-
-		if formulario.is_valid():
-			user = formulario.save()
-			context = { 'user': user }
-			return render(request, 'Usuarios/registrar-perfil.html', context)   
+		formulario_user = UserCreationForm(request.POST)
+		formulario_perfil = FormularioPerfil(request.POST)		
+		if formulario_user.is_valid() and formulario_perfil.is_valid():
+			user = formulario_user.save()
+			perfil = formulario_perfil.save(commit=False)	
+			perfil.user = user
+			perfil.save	
+			return redirect('login')   
 		else:
-			return render(request, "Usuarios/registrar-usuario.html", {"formulario": formulario})
-
-	return render(request, "Usuarios/registrar-usuario.html", {"formulario": UserCreationForm()})		
-
-def registrar_perfil(request, user):
-	if request.method == "POST":
-	    formulario = FormularioPerfil(request.POST)
-	    if formulario.is_valid():
-	        perfil = formulario.save(commit=False)
-	        perfil.user = user
-	        perfil.save()
-	        return redirect('login')
-	    else:
-	        context = { 'formulario': formulario }
-	        return render(request, 'Usuarios/registrar-perfil.html', context)   
+			context = {'formulario_user': formulario_user,
+                   	   'formulario_perfil': formulario_perfil}
+			return render(request, "Usuarios/registrar-usuario.html", context)
 	else:
-	    formulario = FormularioPerfil()
-	    context = { 'formulario': formulario }
-	    return render(request, 'Usuarios/registrar-perfil.html', context) 
+		formulario_user = UserCreationForm()
+		formulario_perfil = FormularioPerfil()
+		context = {'formulario_user': formulario_user,
+                   'formulario_perfil': formulario_perfil}
+		return render(request, "Usuarios/registrar-usuario.html", context)		

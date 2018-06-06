@@ -1,5 +1,5 @@
 from django import forms
-from .models import Perfil
+from Glossario.models import Perfil
 
 class FormularioPerfil(forms.ModelForm):
     
