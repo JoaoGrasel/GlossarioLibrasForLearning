@@ -29,7 +29,8 @@ class Perfil(models.Model):
     sobrenome = models.CharField(max_length=255, null=True) 
     curso = models.CharField(max_length=255, null=True) 
     universidade = models.CharField(max_length=255, null=True) 
-    responsavel = models.BooleanField(default=False)
+    responsavel = models.ManyToManyField(Glossario, related_name='responsavel')
+    membro = models.ManyToManyField(Glossario, related_name='membro')
 
 
     def __str__(self):
