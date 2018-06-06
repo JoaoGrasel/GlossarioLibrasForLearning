@@ -2,7 +2,8 @@
 
     {% csrf_token %}
     
-    {{ formulario.as_p }}
+    {{ formulario_user.as_p }}
+    {{ formulario_perfil.as_p }}
     
     <input type='submit' value='Registrar' />
    </form>
