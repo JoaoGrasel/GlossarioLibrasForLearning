@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response, render, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, logout, get_user
 from django.contrib.auth.models import User
 from .forms import FormularioPerfil
 
@@ -37,3 +37,4 @@ def registrar_usuario(request):
 		context = {'formulario_user': formulario_user,
                    'formulario_perfil': formulario_perfil}
 		return render(request, "Usuarios/registrar-usuario.html", context)		
+
