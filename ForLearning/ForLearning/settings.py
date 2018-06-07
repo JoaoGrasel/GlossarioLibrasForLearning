@@ -124,3 +124,7 @@ MEDIA_URL = '/Glossario/static/Glossario/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'Glossario/static/Glossario')
 AUTH_PROFILE_MODULE = 'Glossario.Perfil'
 
+LOGIN_REDIRECT_URL = '/Usuarios/login'
+LOGOUT_REDIRECT_URL = 'index'
+
+LOGIN_URL = '/Usuarios/login'
