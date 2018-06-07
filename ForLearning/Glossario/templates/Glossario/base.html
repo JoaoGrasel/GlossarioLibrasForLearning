@@ -31,10 +31,10 @@
                     <i class="material-icons">close</i>
                 </div>
             
-	            {% if login %}
+	            {%  if user.is_authenticated  %}
 	    			<ul class="left hide-on-med-and-down">
 	        			<li><a  data-activates="slide-out"  class="slide">Minha Conta<i class="material-icons left">person</i></a></li>
-	        			<li><a class="waves-effect waves-light btn">Fazer Logout</a></li>
+	        			<li><a href="http://localhost:8000/Usuarios/logout/" class="waves-effect waves-light btn">Fazer Logout</a></li>
 	           		</ul>
 	            {% else %}	
 	            	<ul class="left hide-on-med-and-down">
