@@ -29,12 +29,9 @@ class Perfil(models.Model):
     sobrenome = models.CharField(max_length=255, null=True) 
     curso = models.CharField(max_length=255, null=True) 
     universidade = models.CharField(max_length=255, null=True) 
-    responsavel = models.ManyToManyField(Glossario, related_name='responsavel')
-    membro = models.ManyToManyField(Glossario, related_name='membro')
+    glossarios_responsavel = models.ManyToManyField(Glossario, related_name='responsavel', null=True, blank=True)
+    glossarios = models.ManyToManyField(Glossario, related_name='membro', null=True, blank=True)
 
-
-    def __str__(self):
-        return this.nome
 
 class Sinal(models.Model):
     glossario = models.ForeignKey(Glossario, on_delete=models.CASCADE)

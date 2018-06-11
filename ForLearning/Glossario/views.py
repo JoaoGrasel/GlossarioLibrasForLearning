@@ -1,25 +1,36 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
-from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.http import Http404, HttpResponseRedirect, HttpResponse, request
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from .models import Glossario, Sinal, Tema, Perfil
 from django.template import loader
 from django.urls import reverse
 from django.db.models import Q
-from .models import Glossario, Sinal, Tema
 from .forms import FormularioSinal
 # Create your views here.
 
 @login_required
 def index(request):
-    lista_glossarios = Glossario.objects.filter( pai = None)
+    user_logado_id = request.user.id
+    perfis = Perfil.objects.all()
+    perfil_logado = Perfil.objects.get( user=user_logado_id )
+    lista_glossarios = perfil_logado.glossarios.filter( pai = None)
     context = {'lista_glossarios': lista_glossarios}
     return render(request, 'Glossario/index.html', context)
 
+#alem de só mostrar o conteudo do glossario em questao, tambem só pode mostrar o conteudo que o usuario tem acesso
 @login_required
 def conteudo_glossario(request, glossario_id):
     try:
+        user_logado_id = request.user.id
+        perfis = Perfil.objects.all()
+        perfil_logado = Perfil.objects.get( user=user_logado_id )
+
         glossario = Glossario.objects.get(pk=glossario_id)
+        lista_glossarios_filhos = perfil_logado.glossarios.filter(pai = glossario_id)
+
         lista_sinais = Sinal.objects.filter(glossario__id=glossario_id, postado=True)
-        lista_glossarios_filhos = Glossario.objects.filter(pai = glossario_id)
+        
         context = {'lista_sinais': lista_sinais,
                    'glossario': glossario,
                    'lista_glossarios_filhos': lista_glossarios_filhos}
@@ -27,6 +38,7 @@ def conteudo_glossario(request, glossario_id):
         raise Http404("Glossario não existe")
     return render(request,'Glossario/sinais-glossario.html', context)
 
+#alem de só mostrar o conteudo do tema em questao, tambem só pode mostrar o conteudo que o usuario tem acesso
 @login_required
 def conteudo_tema(request, tema_id):
     try:
@@ -64,7 +76,11 @@ def enviar_sinal(request, glossario_id):
 @login_required
 def conteudo_categorias_glossarios(request):
     try:
-        lista_glossarios = Glossario.objects.filter( pai = None, postado=True)
+        user_logado_id = request.user.id
+        perfis = Perfil.objects.all()
+        perfil_logado = Perfil.objects.get( user=user_logado_id )
+        
+        lista_glossarios = perfil_logado.glossarios.filter( pai = None, postado=True)
         context = {'lista_glossarios': lista_glossarios}
 
     except Glossario.DoesNotExist:
