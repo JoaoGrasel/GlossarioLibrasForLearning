@@ -19,6 +19,7 @@ def index(request):
     context = {'lista_glossarios': lista_glossarios,
                'perfil_logado': perfil_logado,
                'lista_glossarios_responsavel': lista_glossarios_responsavel}
+
     return render(request, 'Glossario/index.html', context)
 
 @login_required
@@ -97,7 +98,7 @@ def conteudo_categorias_glossarios(request):
         lista_glossarios_filhos_responsavel = perfil_logado.glossarios_responsavel.filter( pai = None)
         context = {'lista_glossarios': lista_glossarios,
                    'perfil_logado': perfil_logado,
-                   'lista_glossarios_responsavel': lista_glossarios_responsavel}
+                   'lista_glossarios_filhos_responsavel': lista_glossarios_filhos_responsavel}
 
     except Glossario.DoesNotExist:
         raise Http404("Não existem Glossario")

@@ -33,7 +33,7 @@
             
 	            {%  if user.is_authenticated  %}
 	    			<ul class="left hide-on-med-and-down">
-	        			<li><a  data-activates="slide-out"  class="slide">{{nome}}<i class="material-icons left">person</i></a></li>
+	        			<li><a  data-activates="slide-out"  class="slide">{{ perfil_logado.universidade }}<i class="material-icons left">person</i></a></li>
 	        			<li><a href="http://localhost:8000/Usuarios/logout/" class="waves-effect waves-light btn">Fazer Logout</a></li>
 	           		</ul>
 	            {% else %}	
