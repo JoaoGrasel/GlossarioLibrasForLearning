@@ -81,4 +81,8 @@ def conteudo_categorias_temas(request):
         raise Http404("Não existem Temas")
     return render(request,'Glossario/categorias-temas.html', context)   
 
+
+@login_required
+def resultado_pesquisa(request):
+    return render(request,'Glossario/resultado-pesquisa.html', context)   
     

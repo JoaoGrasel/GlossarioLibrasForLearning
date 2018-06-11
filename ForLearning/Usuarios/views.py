@@ -9,7 +9,6 @@ from .forms import FormularioPerfil
 def logar(request):
 	if request.method == 'POST':
 		formulario = AuthenticationForm(data=request.POST)
-
 		if formulario.is_valid():
 			login(request, formulario.get_user())
 			return HttpResponseRedirect("/")
@@ -25,7 +24,7 @@ def registrar_usuario(request):
 			user = formulario_user.save()
 			perfil = formulario_perfil.save(commit=False)	
 			perfil.user = user
-			perfil.save	
+			perfil.save
 			return redirect('login')   
 		else:
 			context = {'formulario_user': formulario_user,

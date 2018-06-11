@@ -1,3 +1,5 @@
-  $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
+
+  $(function(){
+  	$('.search').attr("href","http://localhost:8000/resultado-pesquisa/");
+
+});
