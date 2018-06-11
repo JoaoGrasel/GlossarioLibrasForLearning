@@ -1,5 +1,8 @@
-
-  $(function(){
-  	$('.search').attr("href","http://localhost:8000/resultado-pesquisa/");
-
-});
+  $(document).ready(function() {
+    $("#MostrarEsconderMensagem").click(MostrarEsconderMensagem);
+ });
+ 
+        
+function MostrarEsconderMensagem(){
+    $("#Mensagem").toggle();
+}

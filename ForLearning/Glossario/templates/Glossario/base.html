@@ -33,8 +33,8 @@
             
 	            {%  if user.is_authenticated  %}
 	    			<ul class="left hide-on-med-and-down">
-	        			<li><a  data-activates="slide-out"  class="slide">{{ perfil_logado.universidade }}<i class="material-icons left">person</i></a></li>
-	        			<li><a href="http://localhost:8000/Usuarios/logout/" class="waves-effect waves-light btn">Fazer Logout</a></li>
+	        			<li><a type="button"  id="MostrarEsconderMensagem">{{ perfil_logado.nome }} {{ perfil_logado.sobrenome }}<i class="material-icons left">person</i></a></li>
+	        
 	           		</ul>
 	            {% else %}	
 	            	<ul class="left hide-on-med-and-down">
@@ -45,6 +45,17 @@
             </form>  		   	
    	  	</div>
 	</nav>
+  	
+  	<div id="Mensagem" style="display:none">	
+ 		<div class="seta"></div>
+		<ul class="unidades4">
+			<li><a class="titulo">{{ perfil_logado.nome }} {{ perfil_logado.sobrenome }}</a></li>
+			<li><a class="subtitulo"> {{ perfil_logado.curso }}</a></li>
+			<li><a class="subtitulo">{{ perfil_logado.universidade }}</a></li>
+			<li><a href="http://localhost:8000/Usuarios/logout/" class="waves-effect waves-light btn">Sair</a></li>
+		</ul>
+	</div>		
+
 
 	
 		<!--______________________________________________________________________________________-->
