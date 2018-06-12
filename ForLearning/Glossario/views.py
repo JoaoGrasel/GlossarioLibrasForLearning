@@ -42,7 +42,7 @@ def conteudo_glossario(request, glossario_id):
 
         glossario = Glossario.objects.get(pk=glossario_id)
         lista_glossarios_filhos = perfil_logado.glossarios.filter(pai = glossario_id)
-        lista_glossarios_filhos_responsavel = perfil_logado.glossarios_responsavel.filter( pai = glossario_id)
+        lista_glossarios_responsavel = perfil_logado.glossarios_responsavel.filter( pai = glossario_id)
 
         lista_sinais = Sinal.objects.filter(glossario__id=glossario_id, postado=True)
         
