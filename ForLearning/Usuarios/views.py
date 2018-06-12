@@ -21,10 +21,9 @@ def registrar_usuario(request):
 		formulario_user = UserCreationForm(request.POST)
 		formulario_perfil = FormularioPerfil(request.POST)		
 		if formulario_user.is_valid() and formulario_perfil.is_valid():
-			user = formulario_user.save()
 			perfil = formulario_perfil.save(commit=False)	
-			perfil.user = user
-			perfil.save
+			perfil.user = formulario_user.save()
+			perfil.save()
 			return redirect('login')   
 		else:
 			context = {'formulario_user': formulario_user,
