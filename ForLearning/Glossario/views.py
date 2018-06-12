@@ -122,4 +122,3 @@ def conteudo_categorias_temas(request):
 @login_required
 def resultado_pesquisa(request):
     return render(request,'Glossario/resultado-pesquisa.html', context)   
-    

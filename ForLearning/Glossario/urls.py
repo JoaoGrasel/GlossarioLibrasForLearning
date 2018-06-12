@@ -10,4 +10,5 @@ urlpatterns = [
     path('conteudo-categorias-temas/', views.conteudo_categorias_temas, name='conteudo-categorias-temas'),
     path('conteudo-categorias-glossarios/', views.conteudo_categorias_glossarios, name='conteudo-categorias-glossarios'),
     path('resultado-pesquisa/', views.resultado_pesquisa, name='resultado-pesquisa')
+
 ]
