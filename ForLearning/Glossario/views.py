@@ -113,11 +113,12 @@ def conteudo_categorias_temas(request):
         user_logado_id = request.user.id
         perfis = Perfil.objects.all()
         perfil_logado = Perfil.objects.get( user=user_logado_id )
-        lista_tema = Tema.objects.filter( pai = None, postado=True)
-        context = {'lista_tema': lista_tema,
+
+        lista_temas = Tema.objects.filter( pai=None, postado=True)
+        context = {'lista_temas': lista_temas,
                    'perfil_logado': perfil_logado,} 
 
-    except Glossario.DoesNotExist:
+    except Tema.DoesNotExist:
         raise Http404("Não existem Temas")
     return render(request,'Glossario/categorias-temas.html', context)   
 
