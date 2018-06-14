@@ -5,5 +5,5 @@ class FormularioSinal(forms.ModelForm):
     
     class Meta:
         model  = Sinal
-        fields = ('titulo', 'descricao', 'arquivo_video', 'temas')
+        fields = ('titulo', 'descricao', 'arquivo_video')
         
