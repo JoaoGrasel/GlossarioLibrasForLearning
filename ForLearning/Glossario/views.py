@@ -11,27 +11,16 @@ from .forms import FormularioSinal
 
 @login_required
 def index(request):  # ARRUMAR O RETORNO DAS LISTAS DE SINAIS
-    if request.user.is_superuser:
-        user_logado_id = request.user.id
-        perfis = Perfil.objects.all()
-        perfil_logado = Perfil.objects.get( user=user_logado_id )
-        lista_glossarios = Glossario.objects.filter( pai = None)
-        context = {'lista_glossarios': lista_glossarios,
-                   'perfil_logado': perfil_logado}
+    user_logado_id = request.user.id
+    perfis = Perfil.objects.all()
+    perfil_logado = Perfil.objects.get( user=user_logado_id )
+    lista_glossarios = perfil_logado.glossarios.filter( pai = None)
+    lista_glossarios_responsavel = perfil_logado.glossarios_responsavel.filter( pai = None)
+    context = {'lista_glossarios': lista_glossarios,
+               'perfil_logado': perfil_logado,
+               'lista_glossarios_responsavel': lista_glossarios_responsavel}
 
-        return render(request, 'Glossario/index.html', context)
-
-    else:
-        user_logado_id = request.user.id
-        perfis = Perfil.objects.all()
-        perfil_logado = Perfil.objects.get( user=user_logado_id )
-        lista_glossarios = perfil_logado.glossarios.filter( pai = None)
-        lista_glossarios_responsavel = perfil_logado.glossarios_responsavel.filter( pai = None)
-        context = {'lista_glossarios': lista_glossarios,
-                   'perfil_logado': perfil_logado,
-                   'lista_glossarios_responsavel': lista_glossarios_responsavel}
-
-        return render(request, 'Glossario/index.html', context)
+    return render(request, 'Glossario/index.html', context)
 
 @login_required
 def conteudo_glossario(request, glossario_id):
