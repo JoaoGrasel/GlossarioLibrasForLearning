@@ -10,7 +10,7 @@ from .forms import FormularioSinal
 # Create your views here.
 
 @login_required
-def index(request):  # ARRUMAR O RETORNO DAS LISTAS DE SINAIS
+def index(request):
     user_logado_id = request.user.id
     perfis = Perfil.objects.all()
     perfil_logado = Perfil.objects.get( user=user_logado_id )
@@ -63,15 +63,18 @@ def conteudo_tema(request, tema_id):
 
 @login_required
 def enviar_sinal(request, glossario_id):
+
     user_logado_id = request.user.id
     perfis = Perfil.objects.all()
     perfil_logado = Perfil.objects.get( user=user_logado_id )
+
     if request.method == "POST":
         glossario = Glossario.objects.get(pk=glossario_id)
         formulario = FormularioSinal(request.POST, request.FILES)
         if formulario.is_valid():
             sinal = formulario.save(commit=False)
             sinal.glossario = glossario
+            sinal.postador = perfil_logado
             sinal.save()
             return redirect('conteudo-glossario', glossario.id)
         else:

@@ -24,13 +24,16 @@ class Tema(models.Model):
 
 class Perfil(models.Model):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, editable=False)
     nome = models.CharField(max_length=255, null=False) 
     sobrenome = models.CharField(max_length=255, null=True) 
     curso = models.CharField(max_length=255, null=True) 
     universidade = models.CharField(max_length=255, null=True) 
-    glossarios_responsavel = models.ManyToManyField(Glossario, related_name='responsavel', null=True, blank=True)
-    glossarios = models.ManyToManyField(Glossario, related_name='membro', null=True, blank=True)
+    glossarios_responsavel = models.ManyToManyField(Glossario, related_name='responsavel', blank=True)
+    glossarios = models.ManyToManyField(Glossario, related_name='membro', blank=True)
+
+    def __str__(self):
+        return self.nome
 
 
 class Sinal(models.Model):
@@ -40,7 +43,7 @@ class Sinal(models.Model):
     arquivo_video = models.FileField(upload_to='videos', null=False)
     postado = models.BooleanField(default=False)
     temas = models.ManyToManyField(Tema)
-    responsavel = models.ForeignKey(Perfil, on_delete=models.CASCADE)
+    postador = models.ForeignKey(Perfil, on_delete=models.CASCADE, editable=False, null=True)
     
     def __str__(self):
         return self.titulo
