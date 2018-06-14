@@ -133,3 +133,30 @@ def conteudo_categorias_temas(request):
 @login_required
 def resultado_pesquisa(request):
     return render(request,'Glossario/resultado-pesquisa.html', context)   
+
+
+@login_required
+def enviar_glossario(request, glossario_id):
+    user_logado_id = request.user.id
+    perfis = Perfil.objects.all()
+    perfil_logado = Perfil.objects.get( user=user_logado_id )
+    if request.method == "POST":
+        glossario = Glossario.objects.get(pk=glossario_id)
+        formulario = FormularioGlossario(request.POST, request.FILES)
+        if formulario.is_valid():
+            sinal = formulario.save(commit=False)
+            sinal.glossario = glossario
+            sinal.save()
+            return redirect('conteudo-glossario', glossario.id)
+        else:
+            context = {'glossario': glossario,
+                       'perfil_logado': perfil_logado,
+                       'formulario': formulario}
+            return render(request, 'Glossario/enviar-glossario.html', context)   
+    else:
+        glossario = Glossario.objects.get(pk=glossario_id)
+        formulario = FormularioGlossario()
+        context = {'glossario': glossario,
+                   'perfil_logado': perfil_logado,
+                   'formulario': formulario}
+        return render(request, 'Glossario/enviar-glossario.html', context)     
