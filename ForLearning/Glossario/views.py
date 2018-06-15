@@ -51,7 +51,7 @@ def conteudo_tema(request, tema_id):
         perfis = Perfil.objects.all()
         perfil_logado = Perfil.objects.get( user=user_logado_id )
         tema = Tema.objects.get(pk=tema_id)
-        lista_sinais = Sinal.objects.filter(tema__id=glossario_id, postado=True)
+        lista_sinais = Sinal.objects.filter(tema__id=tema_id, postado=True)
         lista_temas_filhos = Tema.objects.filter(pai = tema_id)
         context = {'lista_sinais': lista_sinais,
                    'tema': tema,
@@ -115,8 +115,15 @@ def conteudo_categorias_temas(request):
         perfil_logado = Perfil.objects.get( user=user_logado_id )
 
         lista_temas = Tema.objects.filter( pai=None, postado=True)
+        quantidade_sinais = []
+
+        for tema in lista_temas:
+            sinais = Sinal.objects.filter(temas=tema.id, postado=True)
+            quantidade_sinais.append(len(sinais))
+
         context = {'lista_temas': lista_temas,
-                   'perfil_logado': perfil_logado,} 
+                   'perfil_logado': perfil_logado,
+                   'quantidade_sinais': quantidade_sinais} 
 
     except Tema.DoesNotExist:
         raise Http404("Não existem Temas")
