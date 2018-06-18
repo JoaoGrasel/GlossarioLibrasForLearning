@@ -9,10 +9,11 @@
 
 {% if lista_temas %}
     <ul>
-    <div class="row contasiner">	
+    <div class="row">	
     {% for tema in lista_temas %}
        <div class="col l12 ">
-       		<li><a href="/conteudo-categorias-temas/{{ glossario.id }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ tema.titulo }}</a></li>
+       		<li><a href="/conteudo-categorias-temas/{{ glossario.id }}/ "class="waves-effect waves-light btn-large color #01579b "><i class="btn-floating"> 2   </i>      {{             tema.titulo }}</a></li> 
+        </div>
           
    		</div>
     {% endfor %}
