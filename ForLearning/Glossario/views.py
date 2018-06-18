@@ -10,17 +10,28 @@ from .forms import FormularioSinal
 # Create your views here.
 
 @login_required
-def index(request):
-    user_logado_id = request.user.id
-    perfis = Perfil.objects.all()
-    perfil_logado = Perfil.objects.get( user=user_logado_id )
-    lista_glossarios = perfil_logado.glossarios.filter( pai = None)
-    lista_glossarios_responsavel = perfil_logado.glossarios_responsavel.filter( pai = None)
-    context = {'lista_glossarios': lista_glossarios,
-               'perfil_logado': perfil_logado,
-               'lista_glossarios_responsavel': lista_glossarios_responsavel}
+def index(request):  # ARRUMAR O RETORNO DAS LISTAS DE SINAIS
+    if request.user.is_superuser:
+        user_logado_id = request.user.id
+        perfis = Perfil.objects.all()
+        perfil_logado = Perfil.objects.get( user=user_logado_id )
+        lista_glossarios = Glossario.objects.filter( pai = None)
+        context = {'lista_glossarios': lista_glossarios,
+                   'perfil_logado': perfil_logado}
 
-    return render(request, 'Glossario/index.html', context)
+        return render(request, 'Glossario/index.html', context)
+
+    else:
+        user_logado_id = request.user.id
+        perfis = Perfil.objects.all()
+        perfil_logado = Perfil.objects.get( user=user_logado_id )
+        lista_glossarios = perfil_logado.glossarios.filter( pai = None)
+        lista_glossarios_responsavel = perfil_logado.glossarios_responsavel.filter( pai = None)
+        context = {'lista_glossarios': lista_glossarios,
+                   'perfil_logado': perfil_logado,
+                   'lista_glossarios_responsavel': lista_glossarios_responsavel}
+
+        return render(request, 'Glossario/index.html', context)
 
 @login_required
 def conteudo_glossario(request, glossario_id):
@@ -63,18 +74,15 @@ def conteudo_tema(request, tema_id):
 
 @login_required
 def enviar_sinal(request, glossario_id):
-
     user_logado_id = request.user.id
     perfis = Perfil.objects.all()
     perfil_logado = Perfil.objects.get( user=user_logado_id )
-
     if request.method == "POST":
         glossario = Glossario.objects.get(pk=glossario_id)
         formulario = FormularioSinal(request.POST, request.FILES)
         if formulario.is_valid():
             sinal = formulario.save(commit=False)
             sinal.glossario = glossario
-            sinal.postador = perfil_logado
             sinal.save()
             return redirect('conteudo-glossario', glossario.id)
         else:
@@ -113,12 +121,11 @@ def conteudo_categorias_temas(request):
         user_logado_id = request.user.id
         perfis = Perfil.objects.all()
         perfil_logado = Perfil.objects.get( user=user_logado_id )
-
-        lista_temas = Tema.objects.filter( pai=None, postado=True)
-        context = {'lista_temas': lista_temas,
+        lista_tema = Tema.objects.filter( pai = None, postado=True)
+        context = {'lista_tema': lista_tema,
                    'perfil_logado': perfil_logado,} 
 
-    except Tema.DoesNotExist:
+    except Glossario.DoesNotExist:
         raise Http404("Não existem Temas")
     return render(request,'Glossario/categorias-temas.html', context)   
 
