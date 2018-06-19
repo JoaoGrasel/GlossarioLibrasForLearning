@@ -10,14 +10,17 @@
 {% if lista_temas %}
     <ul>
     <div class="row">	
-    {% for tema in lista_temas %}
-       <div class="col l12 ">
-       		<li><a href="/conteudo-categorias-temas/{{ glossario.id }}/ "class="waves-effect waves-light btn-large color #01579b "><i class="btn-floating"> 2   </i>      {{             tema.titulo }}</a></li> 
+    {% for tema in lista_temas  %}
+      {% for quantidade in quantidade_sinais  %}
+
+        <div class="col l12 ">
+         		<li><a href="/conteudo-categorias-temas/{{ glossario.id }}/" class= "waves-effect waves-light btn-large color #01579b" ><i class="btn-floating btn teal darken-2 center">{{ quantidade }}</i> {{ tema.titulo }}</a></li> 
         </div>
-          
-   		</div>
+      {% endfor %}
     {% endfor %}
+    </div>
     </ul>
+
     </div>
     </div>
       <div class="footer">
