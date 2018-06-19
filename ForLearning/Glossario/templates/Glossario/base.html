@@ -13,6 +13,7 @@
 		<script type="text/javascript" src="../../static/Glossario/js/functions.js"></script>
 	</head>
    	<body>
+   	<header> 
    	<nav class="teal darken-4">   
 		<div class="nav-wrapper col 9">
 			<a href="http://localhost:8000/" class="brand-logo center" id= "topo" >Glossario Libras</a>	
@@ -44,8 +45,8 @@
 	            {% endif %} 
             </form>  		   	
    	  	</div>
-	</nav>
-  	
+	
+  	</nav>
   	<div id="Mensagem" style="display:none">	
  		<div class="seta"></div>
 		<ul class="unidades4">
@@ -56,29 +57,36 @@
 			<li><a href="http://localhost:8000/Usuarios/minhas-postagens/" class="link-menor">Minhas Postagens</a>
 			<a href="http://localhost:8000/Usuarios/logout/" class="waves-effect btn clarear-5 right">Sair</a></li>
 		</ul>
-	</div>		
-
-
 	
-		<!--______________________________________________________________________________________-->
 
-	<div >
-		{% block content %}
-		{% endblock %}
 	</div>
 
+	</header>
+		<!--______________________________________________________________________________________-->
+
+	<main>	
+		<div >
+			{% block content %}
+			{% endblock %}
+		</div>
+	</main>
   	<!--__________________________________________________________________________________________-->
 <!--        RODAPE DA PAGINA           --> 
-		
-	<a  data-activates="slide-out" class="side-nav">Minha Conta<i class="material-icons left">person</i></a>
- 	   
-		    <footer class="page-footer teal darken-4" >
-		              <div class="col l12">
-		              <div class="container ">© 2018 Todos os direitos Reservados<a class="grey-text text-lighten-4 right" href="#!">Mais Links</a>
-		            </div>
-		          </div>
-		    </footer>
+		 	   			
+	<footer>
+		<div >
+		{% block footer %}
+		{% endblock %}
+		<div >
+		<footer class="page-footer  teal darken-4"  >
+        <div class="col l12">
+            <div class="container ">© 2018 Todos os direitos Reservados<a class="grey-text text-lighten-4 right" href="#!">Mais Links</a>
+        </div>
+        </div>
+       </footer>
+    </footer> 
 
+            
 
 
   	</body>

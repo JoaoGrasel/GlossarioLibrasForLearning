@@ -14,18 +14,10 @@
        <div class="col l12  ">
        		<li><a href="/conteudo-categorias-glossarios/{{ glossario.id }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ glossario.titulo }}</a></li>
    		</div>
+    
     {% endfor %}
     </ul>
-    </div>
-     <div class="footer">
-      <div class="row" >      
-        <div class="col s12 push-s1 right-align ">
-          <button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
-          <p></p>
-          <a class ="link" href="/{{ glossario.id }}/enviar-glossario/ "/> Sugira um glossario!</a>
-        </div>
-      </div>  
-    </div>
+ 
 {% else %}
     <p> Não existem glossarios cadastrados.</p>
     <div class="row" >      
@@ -39,4 +31,16 @@
 {% endif %}
   
 
+{% endblock %}
+{% block footer %}
+
+     <div class="footer">
+      <div class="row" >      
+        <div class="col s12 push-s1 right-align ">
+          <button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
+          <p></p>
+          <a class ="link" href="/{{ glossario.id }}/enviar-glossario/ "/> Sugira um glossario!</a>
+        </div>
+      </div>  
+    </div>
 {% endblock %}

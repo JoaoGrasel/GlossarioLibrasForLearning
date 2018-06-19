@@ -121,14 +121,12 @@ def conteudo_categorias_temas(request):
         user_logado_id = request.user.id
         perfis = Perfil.objects.all()
         perfil_logado = Perfil.objects.get( user=user_logado_id )
-<<<<<<< HEAD
+
 
         lista_tema = Tema.objects.filter( pai = None, postado=True)
         context = {'lista_tema': lista_tema,
                    'perfil_logado': perfil_logado,} 
 
-=======
->>>>>>> a23f358e5d9236e35e0aa28aef30dde921d80df4
 
         lista_temas = Tema.objects.filter( pai=None, postado=True)
         quantidade_sinais = []

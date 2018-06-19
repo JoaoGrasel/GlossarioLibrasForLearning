@@ -9,43 +9,31 @@
 
 {% if lista_temas %}
     <ul>
-    <div class="row">	
-    {% for tema in lista_temas  %}
-      {% for quantidade in quantidade_sinais  %}
-
-        <div class="col l12 ">
-         		<li><a href="/conteudo-categorias-temas/{{ glossario.id }}/" class= "waves-effect waves-light btn-large color #01579b" ><i class="btn-floating btn teal darken-2 center">{{ quantidade }}</i> {{ tema.titulo }}</a></li> 
-        </div>
-      {% endfor %}
-    {% endfor %}
-    </div>
+      <div class="row">	
+        {% for tema in lista_temas  %}
+          {% for quantidade in quantidade_sinais  %}
+            <div class="col l12 ">
+             		<li><a href="/conteudo-categorias-temas/{{ glossario.id }}/" class= "waves-effect waves-light btn-large color #01579b" ><i class="btn-floating btn teal darken-2 center">{{ quantidade }}</i> {{ tema.titulo }}</a></li> 
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
     </ul>
 
-    </div>
-    </div>
-      <div class="footer">
+{% else %}
+    <p> Não existem temas cadastrados.</p>
+         
+{% endif %}
+    
+{% endblock %}
+{% block footer %}
+     <div class="footer">
       <div class="row" >      
         <div class="col s12 push-s1 right-align ">
           <button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
           <p></p>
-          <a class ="link" href="/{{ glossario.id }}/enviar-sinal/ "/> Sugira um sinal para Tema!</a>
+          <a class ="link" href="/{{ glossario.id }}/enviar-glossario/ "/> Sugira um Tema!</a>
         </div>
       </div>  
     </div>
-
-
-
-{% else %}
-    <p> Não existem temas cadastrados.</p>
-        <div class="row" >      
-            <div class="col s12 center ">
-              <button class="waves-effect waves-light btn" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
-            <p></p>
-          <a class ="link" href="/{{ glossario.id }}/enviar-sinal/ "/> Sugira um sinal para Tema!</a>
-        </div>
-      </div>  
-    </div>
-      
-{% endif %}
-    
 {% endblock %}

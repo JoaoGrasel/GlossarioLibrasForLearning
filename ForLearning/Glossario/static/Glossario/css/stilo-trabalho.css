@@ -1,19 +1,24 @@
-footer{
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-}
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #b0bec5;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+    
+
 .footer{
-	position: fixed;
-	left: 0;
-	bottom: 4%;
+
+	position:static;
+
+	bottom: 5%;
 	width: 90%;
 }
 
-body {
- background-color: #b0bec5;
-} 
+
 
 .unidades {
    	
@@ -28,13 +33,13 @@ body {
 .unidades2 {
    	
     padding: 1%;
-    background-color: #cfd8dc ;
+    background-color: #26a69a ;
 }
 
 .unidades3 {
    	
-    padding: 50%;
-    background-color: black ;
+        background-color: #cfd8dc ;
+
 }
 .unidades4 {
 	position: absolute;
@@ -103,6 +108,7 @@ h3{
 	text-indent: 30px;
 	font-weight: bold;
 	color:#616161  ;
+	list-style-type: none;
 
 }	
 .link{
