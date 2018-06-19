@@ -40,10 +40,11 @@ class Sinal(models.Model):
     glossario = models.ForeignKey(Glossario, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
     descricao = models.TextField()
-    arquivo_video = models.FileField(upload_to='videos', null=False)
+    sinal_video = models.FileField(upload_to='videos', null=False)
     postado = models.BooleanField(default=False)
     temas = models.ManyToManyField(Tema, blank=True)
     postador = models.ForeignKey(Perfil, on_delete=models.CASCADE, editable=False, null=True)
+    conceito_video = models.FileField(upload_to='videos', null=True)
     
     def __str__(self):
         return self.titulo

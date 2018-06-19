@@ -121,11 +121,6 @@ def conteudo_categorias_temas(request):
         user_logado_id = request.user.id
         perfis = Perfil.objects.all()
         perfil_logado = Perfil.objects.get( user=user_logado_id )
-<<<<<<< HEAD
-        lista_tema = Tema.objects.filter( pai = None, postado=True)
-        context = {'lista_tema': lista_tema,
-                   'perfil_logado': perfil_logado,} 
-=======
 
         lista_temas = Tema.objects.filter( pai=None, postado=True)
         quantidade_sinais = []
@@ -137,7 +132,7 @@ def conteudo_categorias_temas(request):
         context = {'lista_temas': lista_temas,
                    'perfil_logado': perfil_logado,
                    'quantidade_sinais': quantidade_sinais} 
->>>>>>> 7fdcdec42e58983090528923bc364c6694e46293
+
 
     except Glossario.DoesNotExist:
         raise Http404("Não existem Temas")
@@ -149,28 +144,28 @@ def resultado_pesquisa(request):
     return render(request,'Glossario/resultado-pesquisa.html', context)   
 
 
-@login_required
-def enviar_glossario(request, glossario_id):
-    user_logado_id = request.user.id
-    perfis = Perfil.objects.all()
-    perfil_logado = Perfil.objects.get( user=user_logado_id )
-    if request.method == "POST":
-        glossario = Glossario.objects.get(pk=glossario_id)
-        formulario = FormularioGlossario(request.POST, request.FILES)
-        if formulario.is_valid():
-            sinal = formulario.save(commit=False)
-            sinal.glossario = glossario
-            sinal.save()
-            return redirect('conteudo-glossario', glossario.id)
-        else:
-            context = {'glossario': glossario,
-                       'perfil_logado': perfil_logado,
-                       'formulario': formulario}
-            return render(request, 'Glossario/enviar-glossario.html', context)   
-    else:
-        glossario = Glossario.objects.get(pk=glossario_id)
-        formulario = FormularioGlossario()
-        context = {'glossario': glossario,
-                   'perfil_logado': perfil_logado,
-                   'formulario': formulario}
-        return render(request, 'Glossario/enviar-glossario.html', context)     
+# @login_required
+# def enviar_glossario(request, glossario_id):
+#     user_logado_id = request.user.id
+#     perfis = Perfil.objects.all()
+#     perfil_logado = Perfil.objects.get( user=user_logado_id )
+#     if request.method == "POST":
+#         glossario = Glossario.objects.get(pk=glossario_id)
+#         formulario = FormularioGlossario(request.POST, request.FILES)
+#         if formulario.is_valid():
+#             sinal = formulario.save(commit=False)
+#             sinal.glossario = glossario
+#             sinal.save()
+#             return redirect('conteudo-glossario', glossario.id)
+#         else:
+#             context = {'glossario': glossario,
+#                        'perfil_logado': perfil_logado,
+#                        'formulario': formulario}
+#             return render(request, 'Glossario/enviar-glossario.html', context)   
+#     else:
+#         glossario = Glossario.objects.get(pk=glossario_id)
+#         formulario = FormularioGlossario()
+#         context = {'glossario': glossario,
+#                    'perfil_logado': perfil_logado,
+#                    'formulario': formulario}
+#         return render(request, 'Glossario/enviar-glossario.html', context)     
