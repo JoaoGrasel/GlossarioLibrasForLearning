@@ -16,7 +16,7 @@
    	<header> 
    	<nav class="teal darken-4">   
 		<div class="nav-wrapper col 9">
-			<a href="http://localhost:8000/" class="brand-logo center" id= "topo" >Glossario Libras</a>	
+			<a href="http://localhost:8000/" class="brand-logo center" id= "topo">Glossario Libras</a>	
 			 
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 		        <li><a href="http://localhost:8000/"> Home </a></li>
@@ -45,30 +45,32 @@
 	            {% endif %} 
             </form>  		   	
    	  	</div>
-	
   	</nav>
-  	<div id="Mensagem" style="display:none">	
- 		<div class="seta"></div>
-		<ul class="unidades4">
-			<li><a class="titulo">{{ perfil_logado.nome }} {{ perfil_logado.sobrenome }}</a></li>
-			<li><a class="subtitulo"> {{ perfil_logado.curso }}</a></li>
-			<li><a class="subtitulo">{{ perfil_logado.universidade }}</a></li>
-			<li><a class="subtitulo">------------------------------------------------</a></li>
-			<li><a href="http://localhost:8000/Usuarios/minhas-postagens/" class="link-menor">Minhas Postagens</a>
-			<a href="http://localhost:8000/Usuarios/logout/" class="waves-effect btn clarear-5 right">Sair</a></li>
-		</ul>
+
+  		<div>
+			<div id="Mensagem" style="display:none">	
+ 	 		<div class="seta"></div>
+		
+			<ul class="unidades4">
+				<li><a class="titulo">{{ perfil_logado.nome }} {{ perfil_logado.sobrenome }}</a></li>
+				<li><a class="subtitulo"> {{ perfil_logado.curso }}</a></li>
+				<li><a class="subtitulo">{{ perfil_logado.universidade }}</a></li>
+				<li><a class="subtitulo">------------------------------------------------</a></li>
+				<li><a href="http://localhost:8000/Usuarios/minhas-postagens/" class="link-menor">Minhas Postagens</a>
+				<a href="http://localhost:8000/Usuarios/logout/" class="waves-effect btn clarear-5 right">Sair</a></li>
+			</ul>
+		</div>
+
 	
+  	</header>
 
-	</div>
 
-	</header>
 		<!--______________________________________________________________________________________-->
 
 	<main>	
-		<div >
-			{% block content %}
-			{% endblock %}
-		</div>
+		{% block content %}
+		{% endblock %}
+		
 	</main>
   	<!--__________________________________________________________________________________________-->
 <!--        RODAPE DA PAGINA           --> 

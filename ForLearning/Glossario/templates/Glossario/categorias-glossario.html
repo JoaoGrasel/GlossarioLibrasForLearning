@@ -9,10 +9,10 @@
 
 {% if lista_glossarios %}
     <ul>
-    <div class="row">	
+    <div class="row container">	
     {% for glossario in lista_glossarios %}
-       <div class="col l12  ">
-       		<li><a href="/conteudo-categorias-glossarios/{{ glossario.id }}/ " class="waves-effect waves-light btn-large color #01579b ">{{ glossario.titulo }}</a></li>
+       <div class="col l3">
+       		<li><a href="/conteudo-categorias-glossarios/{{ glossario.id }}/ " class="waves-effect waves-light btn-large color #01579b  center">{{ glossario.titulo }}</a></li>
    		</div>
     
     {% endfor %}

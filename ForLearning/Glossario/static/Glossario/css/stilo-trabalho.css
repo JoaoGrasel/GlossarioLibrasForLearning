@@ -13,18 +13,47 @@ body {
 .footer{
 
 	position:static;
-
 	bottom: 5%;
 	width: 90%;
 }
 
+#esquerda {
+    float: left;
+    width: 50%;
 
+    min-height: 85vh;
+    flex-direction: column;
+    background-color: #b0bec5;
+   
+}
+#linhacentral {
+    position: absolute;
+    left: 50%;
+    width: 3px;
+    height: 85%;
+    background: white;
+    margin-left: -1px;
+}
 
+#logo-centro {
+    position: fixed;
+    left: 44.4%;
+    top: 38%;
+    text-align: center;
+}
+
+#direita {
+   	float: left;
+    width: 50%;
+    min-height: 85vh;
+    flex-direction: column;
+    background-color: #cfd8dc;
+}
 .unidades {
    	
     padding: 1%;
     width: 700px;
-    background-color:  #eceff1;
+    background-color:#eceff1;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.1);
     box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
 
@@ -33,22 +62,27 @@ body {
 .unidades2 {
    	
     padding: 1%;
-    background-color: #26a69a ;
+    background-color: #26a69a;
 }
 
 .unidades3 {
-   	
-        background-color: #cfd8dc ;
+	
+   	border-radius: 12px;
+  	border: 6px solid #b0bec5;
+    background-image: linear-gradient( to top ,#eceff1 82%, #cfd8dc  80%,  #eceff1 100% );
+ 
 
 }
 .unidades4 {
-	position: absolute;
+ 	
+   
+    position: absolute;
     padding: 1%;
     background-color: #eceff1;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.1);
     box-shadow: 2px 2px 2px rgba(0,0,0,0.5);;
 	border-left: 14px solid transparent;
- 
+
 
 }
 
@@ -63,7 +97,6 @@ body {
 
 #Mensagem{
 	padding-left: 255px;
-
 	
 }
 
@@ -72,6 +105,8 @@ body {
 	text-indent: 30px;
 	font-weight: bold;
 	color: white;
+	list-style: none;
+		
 }
 
 h1{
@@ -79,36 +114,55 @@ h1{
 	text-indent: 30px;
 	font-weight: bold;
 	color: #004d40;
-	
+	list-style: none;
 }
+
+.texto_glossario{
+	font-size: 40px;
+	text-indent: 30px;
+	font-weight: bold;
+	color: #004d40;
+	list-style: none;
+}
+
+.texto_temas{
+	font-size: 40px;
+	text-indent: 30px;
+	font-weight: bold;
+	color: #009688;
+	list-style: none;
+}
+
 
 h2{
 	font-size: 16px;
 	text-indent: 30px;	
 	font-weight: bold;
 	color: black;
-
+	list-style: none;
 }	
 h3{
 	font-size: 24px;
 	text-indent: 30px;	
 	font-weight: bold;
 	color: #009688;
-
+	list-style: none;
 }	
 .titulo{
 	font-size: 20px;
 	text-indent: 30px;
 	font-weight: bold;
 	color:black ;
-	list-style-type: none;
+	list-style: none;
+
 }
 .subtitulo{
 	font-size: 14px;
 	text-indent: 30px;
 	font-weight: bold;
 	color:#616161  ;
-	list-style-type: none;
+	list-style: none;
+
 
 }	
 .link{
@@ -116,7 +170,7 @@ h3{
 	text-indent: 30px;
 	font-weight: bold;
 	color:#01579b   ;
-
+	list-style: none;
 }
 
 .link-menor{
@@ -124,7 +178,7 @@ h3{
 	text-indent: 30px;
 	font-weight: bold;
 	color:#01579b   ;
-
+	list-style: none;
 }
 
 
@@ -133,5 +187,5 @@ p2{
 	text-indent: 30px;
 	font-weight: bold;
 	color:#009688;
-
-}	
+	list-style: none;
+}

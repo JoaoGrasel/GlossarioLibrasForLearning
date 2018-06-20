@@ -1,16 +1,30 @@
 {% extends 'Glossario/base.html' %}	
  {% block content %}
-    <br></br>
-    <div class="row ">	
-        <br></br><br></br><br></br>
-       <div class="col center l12 ">
-           <a href="/conteudo-categorias-temas/" class="btn-large titulo">TEMA</a> 
-      </div> 
-       		 <br></br><br></br><br></br>
+
+         
+     
+       <div id= "esquerda" class="center">
+           <ul>
+            <br></br>
+            <br></br>
+             <li><a href="/conteudo-categorias-glossarios/"><img id="glossario"  href="/conteudo-categorias-glossarios/" src="../../static/Glossario/imagens/glossario1.jpg" height="300" width="300" class="circle responsive-img"></a></li>
+             <li><a href="/conteudo-categorias-glossarios/" class="texto_glossario">GLOSSARIO</a></li>
+          </ul>
+      </div>
+    
+      <div id= "linhacentral" class="center"></div>
+
+         <a href="https://libras.ufsc.br"><img id="logo-centro" src="../../static/Glossario/imagens/ufsc.jpg" height="150" width="150" class="circle responsive-img center"></a> 		       
       
-      <div class="col  center l12"> 
-           <a href="/conteudo-categorias-glossarios/" class="btn-large titulo">GLOSSARIO</a>
+      <div id="direita" class="center"> 
+           <ul>
+              <br></br>
+              <br></br>
+             <li><a href="/conteudo-categorias-temas/" ><img id="pasta"  href="/conteudo-categorias-glossarios/" src="../../static/Glossario/imagens/pasta1.jpg" height="300" width="300" class="circle responsive-img"></a></li>
+             <li><a href="/conteudo-categorias-temas/" class="texto_temas">TEMAS</a></li>
+          </ul>
       </div>
     </div>
 
 {% endblock %}
+
