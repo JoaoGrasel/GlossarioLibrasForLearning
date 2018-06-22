@@ -129,15 +129,21 @@ def conteudo_categorias_temas(request):
 
 
         lista_temas = Tema.objects.filter( pai=None, postado=True)
-        quantidade_sinais = []
+        quantidade_sinais = dict()
+
+
 
         for tema in lista_temas:
             sinais = Sinal.objects.filter(temas=tema.id, postado=True)
-            quantidade_sinais.append(len(sinais))
+            quantidade_sinais.update(tema=len(sinais))
 
+
+       
         context = {'lista_temas': lista_temas,
                    'perfil_logado': perfil_logado,
-                   'quantidade_sinais': quantidade_sinais} 
+                   'quantidade_sinais': quantidade_sinais,
+                  
+                   } 
 
 
     except Glossario.DoesNotExist:

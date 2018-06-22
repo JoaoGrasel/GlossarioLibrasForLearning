@@ -11,11 +11,12 @@
     <ul>
       <div class="row container">	
         {% for tema in lista_temas  %}
-          {% for quantidade in quantidade_sinais  %}
+      
             <div class="col l3 ">
-             		<li><a href="/conteudo-categorias-temas/{{ glossario.id }}/" class= "waves-effect waves-light btn-large color #01579b" ><i class="btn-floating btn teal darken-2 center">{{ quantidade }}</i> {{ tema.titulo }}</a></li> 
+             		<li><a href="/conteudo-categorias-temas/{{ glossario.id }}/" class= "waves-effect waves-light btn-large color #01579b" ><i class="btn-floating btn teal darken-2 center">{{ quantidade_sinais.tema }}</i> {{ tema.titulo }}</a></li> 
             </div>
-          {% endfor %}
+           
+          
         {% endfor %}
       </div>
     </ul>
