@@ -7,7 +7,9 @@ class FormularioSinal(forms.ModelForm):
         model  = Sinal
         fields = ('titulo', 'descricao', 'sinal_video', 'conceito_video')
 
-    # class Meta:
-    #     model  = Glossario
-    #     exclude = 'titulo'
 
+class FormularioGlossario(forms.ModelForm):
+
+    class Meta:
+        model  = Glossario
+        exclude = ('titulo', 'descricao')

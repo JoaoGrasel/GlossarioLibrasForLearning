@@ -6,55 +6,67 @@
 <!-- AQUI MINEIRO! 
 	O laço for em baixo dessa mensagem é responsável por mostrar na pagina todos os glossarios filhos, é só estilizar esse 'glossario.tittle' como voce quiser. Lembre que quando clicar nele tem que ir para o glossario 
 	em questão. Use como exemplos outros botoes do projeto. Qualquer coisa só mandar mensagem. -->	
-	<br></br>
-</div>
-  <div class="row container">
+	
+  <div class="row  unidades2">
       	<div class="col s12">
-   			<center><p> Todos os videos de {{ tema.titulo }} </p></center>
-   			<br></br>
-   		</div>	
-       	<div class=" col s12 ">	
-		{% for glossario in lista_glossarios_filhos %}
-		    <a href="/Glossario/{{ glossario.id }}/" class="btn #01579b">{{ glossario.titulo }}</a>
- 		{% endfor %}
-      <label></label>	
-   </div>
- </div>  
-</div>
+   			<center><h1>{{ tema.titulo }}</h1></center>
+   	   	</div>	
+ 		<br></br>		<br></br>		<br></br>
+      	<div class=" col s12 ">	
+			{% if lista_temas_filhos  %}
+				{% for tema in lista_temas_filhos %}
+					<a href="/conteudo-categorias-temas/{{ glossario.id }}/" class="subtitulo btn blue-grey lighten-4">{{ glossario.titulo }}</a>
+				 {% endfor %}
+				 {% else %}	
+			 	   <center><p>{{ tema.titulo }} não tem sinais</p></center>
+			{% endif %} 	   
 
-	<br></br>
+      	<label></label>	
+  		 </div>
+	 </div>  
+
+
 	{% if lista_sinais %}
-		<div class="row">
-		{% for sinal in lista_sinais %}
-		 		<div class="col l10 push-l1 ">
-			     	<video  width="320" height="240" controls>
-	                	<source src="/static/Glossario/{{ sinal.arquivo_video }}" type="video/mp4">
-	                </video>
-            			<li class ="titulo" >{{ sinal.titulo }}</li>
-			            <a class ="subtitulo">{{ sinal.descricao }}</a>
-		 		</div>  
-		 </div> 		
+		<center><h3>Sinais de {{ tema.titulo }} </h3></center>
+			<div class="row">	
+			{% for sinal in lista_sinais %}
+			  
+				  
+				  	
+					 		<div class="col l5 push-l1 unidades3 center">
+						 		<ul>		 		
+							     	<a class ="titulo left">{{ sinal.titulo }}</a>
+							  	    <br></br>
+							  	    <a class ="subtitulo left">{{ sinal.descricao }}</a>				     
+							     	<br></br>
+							     	<li><video   height="158" controls><source class="center" src="/static/Glossario/{{ sinal.sinal_video }}" type="video/mp4"></video>
+					   			    <video   height="158" controls><source src="/static/Glossario/{{ sinal.conceito_video }}" type="video/mp4"></video>			    	       
+					   			</ul>
+				   			</div> 
+						
+				  	
+				
+		 	{% endfor %}	
+		 </div>	
 
-	 	{% endfor %}	
-		{% else %}
-		   <center> <p> Nao existem sinais cadastrados.</p> </center>
-		{% endif %}
-		
+	{% else %}
+		<center> <p>Nao existem videos cadastrados.</p> </center>
+	{% endif %}
+
 {% endblock %}
-			
 {% block footer %}
  		<div class="footer">
 			<div class="row" >	    
 				
 				<div class="col s6  ">
 					<br></br>
-					<a class ="link" href="/{{ tema.id }}/enviar-tema/ "/> Sugira um tema para {{ tema.titulo }}!</a>
+					<a class ="link" href="/{{ glossario.id }}/enviar-tema/ "/> Sugira um tema para {{ tema.titulo }}!</a>
 				</div>	
 
 				<div class="col s6 push-s1  right-align">
 					<button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
 					<p></p>
-					<a class ="link" href="/{{ tema.id }}/enviar-sinal/ "/> Sugira um sinal para {{ tema.titulo }}!</a>
+					<a class ="link" href="/{{ glossario.id }}/enviar-sinal/ "/> Sugira um sinal para {{ tema.titulo }}!</a>
 				</div>
 				
 			</div>	
