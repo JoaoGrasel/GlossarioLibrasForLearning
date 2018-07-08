@@ -8,8 +8,8 @@
 			{% if mensagem_erro %}<p><strong>{{ mensagem_erro }}</strong></p>{% endif %}
 
 		<form enctype="multipart/form-data" method="POST">
-			{% csrf_token %}
-    		{{ formulario.as_p }} 
+    		{% csrf_token %}
+    		{{ formulario }} 
     		<button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
     		<button class="waves-effect waves-light btn color #01579b"  type="submit" name="enviar">Enviar</button>
 		</form>

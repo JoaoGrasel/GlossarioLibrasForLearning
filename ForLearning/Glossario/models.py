@@ -14,7 +14,7 @@ class Glossario(models.Model):
 
 class Tema(models.Model):
 
-    titulo = models.CharField(max_length=200)
+    titulo = models.CharField(max_length=20)
     pai = models.ForeignKey("self", on_delete=models.CASCADE, default=None, blank=True, null=True)
     postado = models.BooleanField(default=False)
     

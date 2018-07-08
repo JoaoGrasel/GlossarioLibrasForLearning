@@ -13,7 +13,7 @@
         {% for tema in lista_temas  %}
       
             <div class="col l3 ">
-             		<li><a href="/conteudo-categorias-temas/{{ glossario.id }}/" class= "waves-effect waves-light btn-large color #01579b" ><i class="btn-floating btn teal darken-2 center">{{ quantidade_sinais.tema }}</i> {{ tema.titulo }}</a></li> 
+             		<li><a href="/conteudo-categorias-temas/{{ tema.id }}/" class= "waves-effect waves-light btn-large color #01579b" ><i class="btn-floating btn teal darken-2 center">{{ quantidade_sinais.tema }}</i> {{ tema.titulo }}</a></li> 
             </div>
            
           
@@ -33,7 +33,7 @@
         <div class="col s12 push-s1 right-align ">
           <button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
           <p></p>
-          <a class ="link" href="/{{ glossario.id }}/enviar-glossario/ "/> Sugira um Tema!</a>
+          <a class ="link" href="/{{ tema.id }}/enviar-tema/ "/> Sugira um Tema!</a>
         </div>
       </div>  
     </div>

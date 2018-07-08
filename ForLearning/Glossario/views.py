@@ -6,8 +6,7 @@ from .models import Glossario, Sinal, Tema, Perfil
 from django.template import loader
 from django.urls import reverse
 from django.db.models import Q
-from .forms import FormularioSinal
-from .forms import FormularioGlossario
+from .forms import FormularioSinal, FormularioGlossario
 
 # Create your views here.
 
@@ -63,8 +62,9 @@ def conteudo_tema(request, tema_id):
         user_logado_id = request.user.id
         perfis = Perfil.objects.all()
         perfil_logado = Perfil.objects.get( user=user_logado_id )
+        
         tema = Tema.objects.get(pk=tema_id)
-        lista_sinais = Sinal.objects.filter(tema__id=tema_id, postado=True)
+        lista_sinais = Sinal.objects.filter(postado=True)
         lista_temas_filhos = Tema.objects.filter(pai = tema_id)
         context = {'lista_sinais': lista_sinais,
                    'tema': tema,
@@ -164,22 +164,43 @@ def enviar_glossario(request, glossario_id):
     perfis = Perfil.objects.all()
     perfil_logado = Perfil.objects.get( user=user_logado_id )
     if request.method == "POST":
-        glossario = Glossario.objects.get(pk=glossario_id)
+        glossario = Glossario.objects.get(pk=glossario_id)       
         formulario = FormularioGlossario(request.POST, request.FILES)
         if formulario.is_valid():
             glossario = formulario.save(commit=False)
-            glossario.novo = glossario
             glossario.save()
             return redirect('conteudo-glossario', glossario.id)
         else:
-            context = {'glossario': glossario,
-                       'perfil_logado': perfil_logado,
+            context = {'perfil_logado': perfil_logado,
                        'formulario': formulario}
             return render(request, 'Glossario/enviar-glossario.html', context)   
     else:
         glossario = Glossario.objects.get(pk=glossario_id)
         formulario = FormularioGlossario()
-        context = {'glossario': glossario,
-                   'perfil_logado': perfil_logado,
+        context = {'perfil_logado': perfil_logado,
                    'formulario': formulario}
         return render(request, 'Glossario/enviar-glossario.html', context)     
+
+
+@login_required
+def enviar_tema(request, tema_id):
+    user_logado_id = request.user.id
+    perfis = Perfil.objects.all()
+    perfil_logado = Perfil.objects.get( user=user_logado_id )
+    if request.method == "POST":
+        tema = Tema.objects.get(pk=tema_id)       
+        formulario = FormularioTema(request.POST, request.FILES)
+        if formulario.is_valid():
+            tema = formulario.save(commit=False)
+            tema.save()
+            return redirect('conteudo-tema', tema.id)
+        else:
+            context = {'perfil_logado': perfil_logado,
+                       'formulario': formulario}
+            return render(request, 'Glossario/enviar-tema.html', context)   
+    else:
+        tema = Tema.objects.get(pk=tema_id)
+        formulario = FormularioTema()
+        context = {'perfil_logado': perfil_logado,
+                   'formulario': formulario}
+        return render(request, 'Glossario/enviar-tema.html', context) 

@@ -3,15 +3,15 @@
 <br></br>
 <div class="row container center unidades" >
 	<div class="col l10 push-l1 ">
-		<h3> Envie um sinal para {{ glossario.titulo }}</h3>
+		<h3> Crie um Tema</h3>
 
 			{% if mensagem_erro %}<p><strong>{{ mensagem_erro }}</strong></p>{% endif %}
 
 		<form enctype="multipart/form-data" method="POST">
-			{% csrf_token %}
-    		{{ formulario }}
+    		{% csrf_token %}
+    		{{ formulario }} 
     		<button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
-   		 	<button class="waves-effect waves-light btn color #01579b"  type="submit" name="enviar">Enviar</button>
+    		<button class="waves-effect waves-light btn color #01579b"  type="submit" name="enviar">Enviar</button>
 		</form>
 	</div>
 </div>	

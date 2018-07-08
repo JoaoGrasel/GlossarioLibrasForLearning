@@ -12,4 +12,11 @@ class FormularioGlossario(forms.ModelForm):
 
     class Meta:
         model  = Glossario
-        exclude = ('titulo', 'descricao')
+        fields = ('titulo',)
+
+   
+class FormularioTema(forms.ModelForm):
+
+    class Meta:
+        model  = Tema
+        fields = ('titulo',)
