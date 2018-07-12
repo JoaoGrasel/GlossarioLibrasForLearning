@@ -9,7 +9,7 @@
 
 		<form enctype="multipart/form-data" method="POST">
     		{% csrf_token %}
-    		{{ formulario }} 
+    		{{ FormularioTema }} 
     		<button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
     		<button class="waves-effect waves-light btn color #01579b"  type="submit" name="enviar">Enviar</button>
 		</form>

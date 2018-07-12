@@ -6,7 +6,7 @@ from .models import Glossario, Sinal, Tema, Perfil
 from django.template import loader
 from django.urls import reverse
 from django.db.models import Q
-from .forms import FormularioSinal, FormularioGlossario
+from .forms import FormularioSinal, FormularioGlossario, FormularioTema
 
 # Create your views here.
 
@@ -136,14 +136,14 @@ def conteudo_categorias_temas(request):
 
 
         for tema in lista_temas:
-            sinais = Sinal.objects.filter(temas=tema.id, postado=True)
-            quantidade_sinais.update(tema=len(sinais))
+                sinais = Sinal.objects.filter(temas=tema.id, postado=True)
+                quantidades_sinais = quantidade_sinais.update(tema=len(sinais))
 
 
        
         context = {'lista_temas': lista_temas,
                    'perfil_logado': perfil_logado,
-                   'quantidade_sinais': quantidade_sinais,
+                   'quantidade_sinais': quantidade_sinais
                   
                    } 
 
@@ -172,13 +172,13 @@ def enviar_glossario(request, glossario_id):
             return redirect('conteudo-glossario', glossario.id)
         else:
             context = {'perfil_logado': perfil_logado,
-                       'formulario': formulario}
+                       'FormularioGlossario': formulario}
             return render(request, 'Glossario/enviar-glossario.html', context)   
     else:
         glossario = Glossario.objects.get(pk=glossario_id)
         formulario = FormularioGlossario()
         context = {'perfil_logado': perfil_logado,
-                   'formulario': formulario}
+                   'FormularioGlossario': formulario}
         return render(request, 'Glossario/enviar-glossario.html', context)     
 
 
@@ -196,11 +196,11 @@ def enviar_tema(request, tema_id):
             return redirect('conteudo-tema', tema.id)
         else:
             context = {'perfil_logado': perfil_logado,
-                       'formulario': formulario}
+                       'FormularioTema' : formulario }
             return render(request, 'Glossario/enviar-tema.html', context)   
     else:
         tema = Tema.objects.get(pk=tema_id)
         formulario = FormularioTema()
         context = {'perfil_logado': perfil_logado,
-                   'formulario': formulario}
+                    'FormularioTema' : formulario }
         return render(request, 'Glossario/enviar-tema.html', context) 
