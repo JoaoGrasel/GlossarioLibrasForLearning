@@ -154,8 +154,13 @@ def conteudo_categorias_temas(request):
 
 
 @login_required
-def resultado_pesquisa(request):
-    return render(request,'Glossario/resultado-pesquisa.html', context)   
+def resultado_pesquisa(TemplateView):
+    template_name = "generic/index.html"
+
+    def get(self, request, *args, **kwargs):
+        form = SearchForm()
+        form.helper.form_action = reverse("search")
+        return self.render_to_response({"form": form})   
 
 
 @login_required
@@ -164,7 +169,7 @@ def enviar_glossario(request, glossario_id):
     perfis = Perfil.objects.all()
     perfil_logado = Perfil.objects.get( user=user_logado_id )
     if request.method == "POST":
-        glossario = Glossario.objects.get(pk=glossario_id)       
+        glossario = Glossario.objects.get(pk=glossario_id)          
         formulario = FormularioGlossario(request.POST, request.FILES)
         if formulario.is_valid():
             glossario = formulario.save(commit=False)
