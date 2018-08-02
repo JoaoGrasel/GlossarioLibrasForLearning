@@ -12,7 +12,7 @@ class FormularioGlossario(forms.ModelForm):
 
     class Meta:
         model  = Glossario
-        fields = ('titulo',)
+        fields = ('titulo', 'pai' )
 
    
 class FormularioTema(forms.ModelForm):

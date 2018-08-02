@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from django.db.models import Lookup
+
 
 # Create your models here.
 
@@ -17,7 +19,6 @@ class Tema(models.Model):
     titulo = models.CharField(max_length=200)
     pai = models.ForeignKey("self", on_delete=models.CASCADE, default=None, blank=True, null=True)
     postado = models.BooleanField(default=False)
-    numerotemas = models.IntegerField()
     
     def __str__(self):
         return self.titulo;
@@ -50,3 +51,11 @@ class Sinal(models.Model):
     def __str__(self):
         return self.titulo
 
+class NotEqual(Lookup):
+    lookup_name = 'ne'
+
+    def as_sql(self, compiler, connection):
+        lhs, lhs_params = self.process_lhs(compiler, connection)
+        rhs, rhs_params = self.process_rhs(compiler, connection)
+        params = lhs_params + rhs_params
+        return '%s <> %s' % (lhs, rhs), params
