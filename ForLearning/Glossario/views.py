@@ -155,13 +155,26 @@ def conteudo_categorias_temas(request):
 
 
 @login_required
-def resultado_pesquisa(TemplateView):
-    template_name = "generic/index.html"
+def resultado_pesquisa(request):
+    termo_busca = request.GET.get('pesquisa', None)
 
-    def get(self, request, *args, **kwargs):
-        form = SearchForm()
-        form.helper.form_action = reverse("search")
-        return self.render_to_response({"form": form})   
+
+    if termo_busca:
+        sinais = Sinal.objects.all()
+        sinais = Sinal.objects.filter(titulo__icontains=termo_busca) | Sinal.objects.filter(descricao__icontains=termo_busca)
+        context = {'sinais': sinais,
+                   'termo_busca': termo_busca
+
+                   }
+
+    else:
+        sinais = Sinal.objects.all()
+        context = {'sinais': sinais,
+                    'termo_busca': termo_busca
+                   }
+
+
+    return render(request, 'Glossario/resultado-pesquisa.html', context)
 
 
 @login_required

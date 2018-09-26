@@ -116,6 +116,13 @@ h1{
 	color: #004d40;
 	list-style: none;
 }
+h4{
+	font-size: 27px;
+	text-indent: 30px;
+	font-weight: bold;
+	color: #004d40;
+	list-style: none;
+}
 
 .texto_glossario{
 	font-size: 40px;

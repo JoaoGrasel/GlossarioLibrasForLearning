@@ -1,7 +1,31 @@
 {% extends 'Glossario/base.html' %}	
  {% block content %}
-    
-    <button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button>
-</form>
+	{% if sinais %}
+				<br> </br>
+					<center><h4> Buscas relacionadas a " {{ termo_busca }} " </h4></center>
+				<br> </br>
 
+			<div class="row">
+			{% for sinal in sinais %}
+
+					 		<div class="col l5 push-l1 unidades3 center">
+						 		<ul>
+							     	<a class ="titulo left">{{ sinal.titulo }}</a>
+							  	    <br></br>
+							  	    <a class ="subtitulo left">{{ sinal.descricao }}</a>
+							     	<br></br>
+							     	<li><video   width="260"  controls><source class="center" src="/static/Glossario/{{ sinal.sinal_video }}" type="video/mp4"></video>
+					   			    <video   width="260" controls><source src="/static/Glossario/{{ sinal.conceito_video }}" type="video/mp4"></video>
+					   			</ul>
+				   			</div>
+
+		 	{% endfor %}
+		 </div>
+	{% else %}
+			<br> </br><br> </br>
+			<ul id="nav-mobile" class="center">
+				<li><h4> Não foram encontrado buscas relacionadas a "{{ termo_busca }}"<h4>
+				<li><button class="waves-effect waves-light btn color #01579b" type="submit" nome="voltar" onclick='history.go(-1)' >Voltar</button></li>
+			<ul>
+	{% endif %}
    {% endblock %}
